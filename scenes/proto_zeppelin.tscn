@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://bgk7e33l0r4ar"]
+
+[ext_resource type="PackedScene" uid="uid://cn4uvk1vuv6ch" path="res://models/ProtoZeppelin_Base.glb" id="1_jygee"]
+
+[node name="ProtoZeppelin" type="Node3D" unique_id=1089814323]
+
+[node name="ProtoZeppelin_Base" parent="." unique_id=1166779442 instance=ExtResource("1_jygee")]
