@@ -1,3 +1,75 @@
 [gd_scene format=3 uid="uid://ciosjt160nlat"]
 
+[ext_resource type="Script" uid="uid://djxskcqyo0k8g" path="res://scenes/enemies/enemy.gd" id="1_6xk8f"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6xk8f"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_6xk8f"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8e3ao"]
+albedo_color = Color(0.38039216, 0.6039216, 0.37254903, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_38ino"]
+radius = 0.2
+height = 0.4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fcftc"]
+albedo_color = Color(1, 0.21568628, 0.20392157, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_lu5c6"]
+radius = 0.1
+height = 0.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nb6gf"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_jt03m"]
+top_radius = 0.2
+bottom_radius = 0.2
+height = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n7575"]
+albedo_color = Color(0.4732359, 0, 0.04630114, 1)
+
 [node name="Enemy" type="CharacterBody3D" unique_id=2114948265]
+collision_layer = 9
+script = ExtResource("1_6xk8f")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1441358735]
+shape = SubResource("CapsuleShape3D_6xk8f")
+
+[node name="ProtoModel" type="Node3D" parent="." unique_id=1030611067]
+
+[node name="Body" type="MeshInstance3D" parent="ProtoModel" unique_id=1742828398]
+mesh = SubResource("CapsuleMesh_6xk8f")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_8e3ao")
+
+[node name="Eyeball1" type="MeshInstance3D" parent="ProtoModel" unique_id=53132455]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0.6, 0.4)
+mesh = SubResource("SphereMesh_38ino")
+surface_material_override/0 = SubResource("StandardMaterial3D_fcftc")
+
+[node name="Eyeball3" type="MeshInstance3D" parent="ProtoModel" unique_id=1730528106]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 0.70000005, 0.5)
+mesh = SubResource("SphereMesh_lu5c6")
+surface_material_override/0 = SubResource("StandardMaterial3D_nb6gf")
+
+[node name="Eyeball4" type="MeshInstance3D" parent="ProtoModel" unique_id=1754274662]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 0.70000005, 0.5)
+mesh = SubResource("SphereMesh_lu5c6")
+surface_material_override/0 = SubResource("StandardMaterial3D_nb6gf")
+
+[node name="Eyeball2" type="MeshInstance3D" parent="ProtoModel" unique_id=1395965237]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.29999998, 0.6, 0.4)
+mesh = SubResource("SphereMesh_38ino")
+surface_material_override/0 = SubResource("StandardMaterial3D_fcftc")
+
+[node name="Mouth1" type="MeshInstance3D" parent="ProtoModel" unique_id=854099147]
+transform = Transform3D(1, 0, 0, 0, 0.9396926, 0.34202012, 0, -0.34202012, 0.9396926, 0, 0.3, 0.4)
+mesh = SubResource("CylinderMesh_jt03m")
+surface_material_override/0 = SubResource("StandardMaterial3D_n7575")
+
+[node name="Mouth2" type="MeshInstance3D" parent="ProtoModel" unique_id=1039053479]
+transform = Transform3D(1, 0, 0, 0, 0.96592593, -0.25881907, 0, 0.25881907, 0.96592593, 0, 0.20000002, 0.4)
+mesh = SubResource("CylinderMesh_jt03m")
+surface_material_override/0 = SubResource("StandardMaterial3D_n7575")

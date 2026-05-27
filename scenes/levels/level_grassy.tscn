@@ -5,6 +5,7 @@
 [ext_resource type="Material" uid="uid://ynp4jvhtdc7m" path="res://materials/basic_cave_mat.tres" id="3_1ase0"]
 [ext_resource type="PackedScene" uid="uid://bgk7e33l0r4ar" path="res://scenes/proto_zeppelin.tscn" id="4_1ase0"]
 [ext_resource type="PackedScene" uid="uid://cdxa2mi8sbv0j" path="res://scenes/player/player.tscn" id="5_hg8mx"]
+[ext_resource type="PackedScene" uid="uid://ciosjt160nlat" path="res://scenes/enemies/enemy.tscn" id="6_p0eyi"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hg8mx"]
 sky_top_color = Color(0.57698536, 0.7120216, 0.97359926, 1)
@@ -309,3 +310,8 @@ lateral_speed = 15.0
 [node name="Path3D" type="Path3D" parent="." unique_id=1759512057]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 1, 29)
 curve = SubResource("Curve3D_p0eyi")
+
+[node name="Enemies" type="Node3D" parent="." unique_id=890266399]
+
+[node name="Enemy" parent="Enemies" unique_id=2114948265 instance=ExtResource("6_p0eyi")]
+transform = Transform3D(0.25881907, 0, -0.9659258, 0, 1, 0, 0.9659258, 0, 0.25881907, 17.5806, 1.0000002, 27.661448)
