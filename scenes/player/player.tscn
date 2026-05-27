@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://cdxa2mi8sbv0j"]
+
+[ext_resource type="Material" uid="uid://b18g257a6b6y0" path="res://materials/debug_good_mat.tres" id="1_8afob"]
+[ext_resource type="Script" uid="uid://cs1b0s645vbuo" path="res://scenes/player/player.gd" id="1_dovo2"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dovo2"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_gmlin"]
+material = ExtResource("1_8afob")
+
+[sub_resource type="SphereMesh" id="SphereMesh_lvxji"]
+radius = 0.2
+height = 0.4
+
+[node name="Player" type="CharacterBody3D" unique_id=230586961]
+script = ExtResource("1_dovo2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=15050518]
+shape = SubResource("CapsuleShape3D_dovo2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1356145818]
+mesh = SubResource("CapsuleMesh_gmlin")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D" unique_id=286140339]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 0.5, -0.5)
+mesh = SubResource("SphereMesh_lvxji")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D" unique_id=495381093]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0.5, -0.5)
+mesh = SubResource("SphereMesh_lvxji")
+
+[node name="CameraHandle" type="Node3D" parent="." unique_id=891848014]
+
+[node name="Camera3D" type="Camera3D" parent="CameraHandle" unique_id=2069354136]
+transform = Transform3D(-4.371139e-08, 0.4616557, -0.8870592, 0, 0.8870592, 0.4616557, 1, 2.0179613e-08, -3.877459e-08, -7.77048, 5.587895, -3.3965847e-07)
+fov = 55.0
