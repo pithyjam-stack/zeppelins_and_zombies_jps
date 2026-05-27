@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://bgk7e33l0r4ar" path="res://scenes/proto_zeppelin.tscn" id="4_1ase0"]
 [ext_resource type="PackedScene" uid="uid://cdxa2mi8sbv0j" path="res://scenes/player/player.tscn" id="5_hg8mx"]
 [ext_resource type="PackedScene" uid="uid://ciosjt160nlat" path="res://scenes/enemies/enemy.tscn" id="6_p0eyi"]
+[ext_resource type="PackedScene" uid="uid://dtt7ca4gwhp56" path="res://scenes/Interactable/debug_print_station.tscn" id="7_jdjwh"]
+[ext_resource type="PackedScene" uid="uid://62yalbv34nwy" path="res://scenes/Interactable/growth_station.tscn" id="8_68ygf"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hg8mx"]
 sky_top_color = Color(0.57698536, 0.7120216, 0.97359926, 1)
@@ -315,3 +317,15 @@ curve = SubResource("Curve3D_p0eyi")
 
 [node name="Enemy" parent="Enemies" unique_id=2114948265 instance=ExtResource("6_p0eyi")]
 transform = Transform3D(0.25881907, 0, -0.9659258, 0, 1, 0, 0.9659258, 0, 0.25881907, 17.5806, 1.0000002, 27.661448)
+
+[node name="Doodads" type="Node3D" parent="." unique_id=1896580868]
+
+[node name="DebugPrintStation" parent="Doodads" unique_id=1423883054 instance=ExtResource("7_jdjwh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.068766, 0, 26.426886)
+
+[node name="GrowthStation_Normal" parent="Doodads" unique_id=137512283 instance=ExtResource("8_68ygf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.582573, 0, 33.985554)
+
+[node name="GrowthStation_Big" parent="Doodads" unique_id=481417489 instance=ExtResource("8_68ygf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.417427, 0, 33.985554)
+scale_factor = Vector3(1.5, 1.5, 1.5)

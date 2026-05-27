@@ -50,7 +50,6 @@ func _physics_process(delta: float) -> void:
 		_rotate_to_direction(move_direction.normalized(), delta)
 	_rotate_camera_to_path_direction(tangent, delta)
 
-# TODO: Need to fix up the camera rotation
 
 func _rotate_camera_to_path_direction(local_tangent: Vector3, delta: float) -> void:
 	var world_direction := path.global_transform.basis * local_tangent
