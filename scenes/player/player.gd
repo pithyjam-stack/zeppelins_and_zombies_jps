@@ -45,17 +45,34 @@ func _physics_process(delta: float) -> void:
 	var target_position := path.global_transform * (center_curve + right * side_offset)
 	global_position = target_position
 	
-	_rotate_to_path_direction(tangent, delta)
-	#move_and_slide()
+	var move_direction = tangent * sign(input_horizontal) + right * sign(input_lateral)
+	if move_direction.length() > 0.01:
+		_rotate_to_direction(move_direction.normalized(), delta)
+	_rotate_camera_to_path_direction(tangent, delta)
 
+# TODO: Need to fix up the camera rotation
 
-func _rotate_to_path_direction(local_tangent: Vector3, delta: float) -> void:
-	var world_tangent := path.global_transform.basis * local_tangent
-	world_tangent.y = 0.0
-	world_tangent = world_tangent.normalized()
-	
-	if world_tangent.length() < 0.001:
+func _rotate_camera_to_path_direction(local_tangent: Vector3, delta: float) -> void:
+	var world_direction := path.global_transform.basis * local_tangent
+	world_direction.y = 0.0
+	if world_direction.length() < 0.001:
 		return
 	
-	var target_basis := Basis.looking_at(world_tangent, Vector3.UP)
-	global_basis = global_basis.slerp(target_basis, rotation_smoothness * delta)
+	world_direction = world_direction.normalized()
+	
+	var target_basis := Basis.looking_at(world_direction, Vector3.UP)
+	
+	var turn_weight := clampf(rotation_smoothness * delta, 0.0, 1.0)
+	$CameraHandle.global_basis = $CameraHandle.global_basis.slerp(target_basis, turn_weight)
+
+func _rotate_to_direction(local_direction: Vector3, delta: float) -> void:
+	var world_direction := path.global_transform.basis * local_direction
+	world_direction.y = 0.0
+	world_direction = world_direction.normalized()
+	
+	if world_direction.length() < 0.001:
+		return
+	
+	var target_basis := Basis.looking_at(world_direction, Vector3.UP)
+	var turn_weight := clampf(rotation_smoothness * delta, 0.0, 1.0)
+	$MeshInstance3D.global_basis = $MeshInstance3D.global_basis.slerp(target_basis, turn_weight)

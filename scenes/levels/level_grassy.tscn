@@ -299,7 +299,7 @@ radius = 0.29074773
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.2545648, 1.0000002, 20.694878)
 
 [node name="Player" parent="." unique_id=230586961 node_paths=PackedStringArray("path") instance=ExtResource("5_hg8mx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0000002, 28.766424)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 1.0000002, 28.766424)
 path = NodePath("../Path3D")
 max_path_dist = 82.0
 side_limit = 4.0
