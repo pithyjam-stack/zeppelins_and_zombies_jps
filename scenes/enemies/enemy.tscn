@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://ciosjt160nlat"]
+
+[node name="Enemy" type="CharacterBody3D" unique_id=2114948265]
