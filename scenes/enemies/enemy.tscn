@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://ciosjt160nlat"]
 
 [ext_resource type="Script" uid="uid://djxskcqyo0k8g" path="res://scenes/enemies/enemy.gd" id="1_6xk8f"]
+[ext_resource type="PackedScene" uid="uid://dgqo3lt6tn58d" path="res://scenes/player/health_component.tscn" id="2_8e3ao"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6xk8f"]
 
@@ -32,6 +33,7 @@ albedo_color = Color(0.4732359, 0, 0.04630114, 1)
 
 [node name="Enemy" type="CharacterBody3D" unique_id=2114948265]
 collision_layer = 9
+collision_mask = 5
 script = ExtResource("1_6xk8f")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1441358735]
@@ -73,3 +75,11 @@ surface_material_override/0 = SubResource("StandardMaterial3D_n7575")
 transform = Transform3D(1, 0, 0, 0, 0.96592593, -0.25881907, 0, 0.25881907, 0.96592593, 0, 0.20000002, 0.4)
 mesh = SubResource("CylinderMesh_jt03m")
 surface_material_override/0 = SubResource("StandardMaterial3D_n7575")
+
+[node name="HealthComponent" parent="." unique_id=263350021 instance=ExtResource("2_8e3ao")]
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1691835354]
+avoidance_enabled = true
+debug_enabled = true
+
+[connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]

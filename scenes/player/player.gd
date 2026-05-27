@@ -1,5 +1,6 @@
 extends CharacterBody3D
 
+class_name Player
 
 @export var path : Path3D
 @export var min_path_dist : float = 0.0
