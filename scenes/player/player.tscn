@@ -2,6 +2,7 @@
 
 [ext_resource type="Material" uid="uid://b18g257a6b6y0" path="res://materials/debug_good_mat.tres" id="1_8afob"]
 [ext_resource type="Script" uid="uid://cs1b0s645vbuo" path="res://scenes/player/player.gd" id="1_dovo2"]
+[ext_resource type="PackedScene" uid="uid://bm3v2famfv788" path="res://scenes/player/ray_camera.tscn" id="3_gmlin"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dovo2"]
 
@@ -13,8 +14,8 @@ radius = 0.2
 height = 0.4
 
 [node name="Player" type="CharacterBody3D" unique_id=230586961 groups=["Player"]]
-collision_layer = 5
-collision_mask = 8
+collision_layer = 4
+collision_mask = 9
 script = ExtResource("1_dovo2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=15050518]
@@ -33,6 +34,5 @@ mesh = SubResource("SphereMesh_lvxji")
 
 [node name="CameraHandle" type="Node3D" parent="." unique_id=891848014]
 
-[node name="Camera3D" type="Camera3D" parent="CameraHandle" unique_id=2069354136]
+[node name="RayCamera" parent="CameraHandle" unique_id=1844671264 instance=ExtResource("3_gmlin")]
 transform = Transform3D(-4.371139e-08, 0.4616557, -0.8870592, 0, 0.8870592, 0.4616557, 1, 2.0179613e-08, -3.877459e-08, -7.77048, 5.587895, -3.3965847e-07)
-fov = 55.0
