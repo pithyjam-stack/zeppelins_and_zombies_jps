@@ -46,9 +46,9 @@ func _physics_process(delta: float) -> void:
 	var target_position := path.global_transform * (center_curve + right * side_offset)
 	global_position = target_position
 	
-	var move_direction = tangent * sign(input_horizontal) + right * sign(input_lateral)
-	if move_direction.length() > 0.01:
-		_rotate_to_direction(move_direction.normalized(), delta)
+	var _move_direction = tangent * sign(input_horizontal) + right * sign(input_lateral)
+	#if move_direction.length() > 0.01:
+		#_rotate_to_direction(_move_direction.normalized(), delta)
 	_rotate_camera_to_path_direction(tangent, delta)
 
 

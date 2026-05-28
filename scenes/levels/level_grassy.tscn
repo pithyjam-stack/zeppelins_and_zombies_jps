@@ -62,7 +62,7 @@ point_count = 6
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=1178941292]
 navigation_mesh = SubResource("NavigationMesh_68ygf")
 
-[node name="Floor_Cylinder" type="CSGCylinder3D" parent="NavigationRegion3D" unique_id=1243765972]
+[node name="Floor_Cylinder" type="CSGCylinder3D" parent="NavigationRegion3D" unique_id=1243765972 groups=["Floor"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 use_collision = true
 radius = 50.0
