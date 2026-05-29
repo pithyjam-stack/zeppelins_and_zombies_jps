@@ -1,7 +1,7 @@
-[gd_scene format=3 uid="uid://ciosjt160nlat"]
+[gd_scene format=3 uid="uid://ccfsg66w7eqvk"]
 
-[ext_resource type="Script" uid="uid://djxskcqyo0k8g" path="res://scenes/enemies/enemy.gd" id="1_6xk8f"]
-[ext_resource type="PackedScene" uid="uid://dgqo3lt6tn58d" path="res://scenes/player/health_component.tscn" id="2_8e3ao"]
+[ext_resource type="Script" uid="uid://djxskcqyo0k8g" path="res://scenes/enemies/zombie.gd" id="1_gl10n"]
+[ext_resource type="PackedScene" uid="uid://dgqo3lt6tn58d" path="res://scenes/player/health_component.tscn" id="2_rdvt3"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6xk8f"]
 
@@ -31,10 +31,10 @@ height = 0.1
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n7575"]
 albedo_color = Color(0.4732359, 0, 0.04630114, 1)
 
-[node name="Enemy" type="CharacterBody3D" unique_id=2114948265]
+[node name="Zombie" type="CharacterBody3D" unique_id=2114948265]
 collision_layer = 9
 collision_mask = 5
-script = ExtResource("1_6xk8f")
+script = ExtResource("1_gl10n")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1441358735]
 shape = SubResource("CapsuleShape3D_6xk8f")
@@ -76,7 +76,7 @@ transform = Transform3D(1, 0, 0, 0, 0.96592593, -0.25881907, 0, 0.25881907, 0.96
 mesh = SubResource("CylinderMesh_jt03m")
 surface_material_override/0 = SubResource("StandardMaterial3D_n7575")
 
-[node name="HealthComponent" parent="." unique_id=263350021 instance=ExtResource("2_8e3ao")]
+[node name="HealthComponent" parent="." unique_id=263350021 instance=ExtResource("2_rdvt3")]
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1691835354]
 avoidance_enabled = true

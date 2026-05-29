@@ -1,0 +1,90 @@
+[gd_scene format=3 uid="uid://b6wv1i1ga6cfj"]
+
+[ext_resource type="Script" uid="uid://chw2neoyjaihg" path="res://scenes/enemies/half_zombie.gd" id="1_g8b84"]
+[ext_resource type="PackedScene" uid="uid://dgqo3lt6tn58d" path="res://scenes/player/health_component.tscn" id="2_ru6kr"]
+[ext_resource type="PackedScene" uid="uid://dpudyepafkry7" path="res://scenes/enemies/ball.tscn" id="3_ru6kr"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_jda86"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g15bd"]
+albedo_color = Color(0.32999998, 0.6203334, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_g8b84"]
+material = SubResource("StandardMaterial3D_g15bd")
+
+[sub_resource type="SphereMesh" id="SphereMesh_jda86"]
+radius = 0.2
+height = 0.4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g8b84"]
+albedo_color = Color(1, 0.21568628, 0.20392157, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_ru6kr"]
+radius = 0.1
+height = 0.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_boq17"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_hkptg"]
+top_radius = 0.2
+bottom_radius = 0.2
+height = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3oc2p"]
+albedo_color = Color(0.4732359, 0, 0.04630114, 1)
+
+[node name="HalfZombie" type="CharacterBody3D" unique_id=185993919]
+collision_layer = 9
+collision_mask = 5
+script = ExtResource("1_g8b84")
+ball_scene = ExtResource("3_ru6kr")
+max_health = 15.0
+speed = 8.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=149472173]
+shape = SubResource("SphereShape3D_jda86")
+
+[node name="ProtoModel" type="Node3D" parent="." unique_id=859863102]
+
+[node name="Body" type="MeshInstance3D" parent="ProtoModel" unique_id=809898782]
+mesh = SubResource("SphereMesh_g8b84")
+
+[node name="Eyeball1" type="MeshInstance3D" parent="ProtoModel" unique_id=952002367]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0.40000004, 0.2)
+mesh = SubResource("SphereMesh_jda86")
+surface_material_override/0 = SubResource("StandardMaterial3D_g8b84")
+
+[node name="Eyeball3" type="MeshInstance3D" parent="ProtoModel" unique_id=1044697861]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 0.50000006, 0.3)
+mesh = SubResource("SphereMesh_ru6kr")
+surface_material_override/0 = SubResource("StandardMaterial3D_boq17")
+
+[node name="Eyeball4" type="MeshInstance3D" parent="ProtoModel" unique_id=157727766]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 0.50000006, 0.3)
+mesh = SubResource("SphereMesh_ru6kr")
+surface_material_override/0 = SubResource("StandardMaterial3D_boq17")
+
+[node name="Eyeball2" type="MeshInstance3D" parent="ProtoModel" unique_id=1985536853]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.29999998, 0.40000004, 0.2)
+mesh = SubResource("SphereMesh_jda86")
+surface_material_override/0 = SubResource("StandardMaterial3D_g8b84")
+
+[node name="Mouth1" type="MeshInstance3D" parent="ProtoModel" unique_id=696252639]
+transform = Transform3D(1, 0, 0, 0, 0.9396926, 0.34202012, 0, -0.34202012, 0.9396926, 0, 0.10000001, 0.4)
+mesh = SubResource("CylinderMesh_hkptg")
+surface_material_override/0 = SubResource("StandardMaterial3D_3oc2p")
+
+[node name="Mouth2" type="MeshInstance3D" parent="ProtoModel" unique_id=1594987631]
+transform = Transform3D(1, 0, 0, 0, 0.96592593, -0.25881907, 0, 0.25881907, 0.96592593, 0, 1.4901161e-08, 0.4)
+mesh = SubResource("CylinderMesh_hkptg")
+surface_material_override/0 = SubResource("StandardMaterial3D_3oc2p")
+
+[node name="HealthComponent" parent="." unique_id=263350021 instance=ExtResource("2_ru6kr")]
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=566375047]
+avoidance_enabled = true
+debug_enabled = true
+
+[node name="ball" parent="." unique_id=1716264385 instance=ExtResource("3_ru6kr")]
+
+[connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]

@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://dpudyepafkry7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8h8sg"]
+albedo_color = Color(1, 0.5294118, 0.29411766, 1)
+
+[node name="ball" type="CSGSphere3D" unique_id=1716264385]
+use_collision = true
+collision_layer = 0
+collision_mask = 5
+radius = 0.2
+material = SubResource("StandardMaterial3D_8h8sg")

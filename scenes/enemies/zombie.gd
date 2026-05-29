@@ -1,12 +1,17 @@
 extends CharacterBody3D
 
+class_name Zombie
+
 @export var max_health : float = 20.0
+@export var damage : int = 10
+@export var speed : float = 5.0
 
 @onready var health_component: HealthComponent = $HealthComponent
 @onready var navigation_agent_3d: NavigationAgent3D = $NavigationAgent3D
 @onready var proto_model: Node3D = $ProtoModel
 
 @onready var player: Player = get_tree().get_first_node_in_group("Player")
+
 func _ready() -> void:
 	health_component.update_max_health(max_health)
 
@@ -14,7 +19,7 @@ func _physics_process(delta: float) -> void:
 	var velocity_target := Vector3.ZERO
 	navigation_agent_3d.target_position = player.global_position
 	if not navigation_agent_3d.is_target_reached():
-		velocity_target = get_local_navigation_direction() * 5.0
+		velocity_target = get_local_navigation_direction() * speed
 		orient_body(navigation_agent_3d.get_next_path_position())
 		
 	navigation_agent_3d.velocity = velocity_target
