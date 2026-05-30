@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://bi5xj7pyfmnpy"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_10aji"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_nkuy2"]
+sky_material = SubResource("ProceduralSkyMaterial_10aji")
+
+[sub_resource type="Environment" id="Environment_rsa2n"]
+background_mode = 2
+sky = SubResource("Sky_nkuy2")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_10aji"]
+albedo_color = Color(0.6509804, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_nkuy2"]
+material = SubResource("StandardMaterial3D_10aji")
+radius = 1.5
+height = 5.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rsa2n"]
+albedo_color = Color(0.39, 0.23686, 0.0936, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_wqllp"]
+material = SubResource("StandardMaterial3D_rsa2n")
+size = Vector3(0.8, 1, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t8s1f"]
+albedo_color = Color(1, 0.7882353, 0.27058825, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_7hggv"]
+material = SubResource("StandardMaterial3D_t8s1f")
+size = Vector3(1.5, 0.8, 0.1)
+
+[sub_resource type="SeparationRayShape3D" id="SeparationRayShape3D_6k08s"]
+
+[node name="LevelAir" type="CharacterBody3D" unique_id=1666459336]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=305815137]
+environment = SubResource("Environment_rsa2n")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1372199288]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+directional_shadow_max_distance = 1.0
+
+[node name="ProtoModel" type="Node3D" parent="." unique_id=862356851]
+
+[node name="Balloon" type="MeshInstance3D" parent="ProtoModel" unique_id=1498679597]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 1.5, 0)
+mesh = SubResource("SphereMesh_nkuy2")
+skeleton = NodePath("../..")
+
+[node name="Cockpit" type="MeshInstance3D" parent="ProtoModel" unique_id=747642941]
+mesh = SubResource("BoxMesh_wqllp")
+
+[node name="Fin" type="MeshInstance3D" parent="ProtoModel" unique_id=659262905]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -1, 1.5999999, -1.8000002)
+mesh = SubResource("PrismMesh_7hggv")
+
+[node name="Fin2" type="MeshInstance3D" parent="ProtoModel" unique_id=1013980169]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 1.1000001, 1.5999999, -1.8000002)
+mesh = SubResource("PrismMesh_7hggv")
+
+[node name="SpringArm3D" type="SpringArm3D" parent="." unique_id=820032662]
+transform = Transform3D(-1, 3.694646e-08, -7.923193e-08, 0, 0.9063077, 0.42261824, 8.742278e-08, 0.42261824, -0.9063077, 0, 0, 0)
+shape = SubResource("SeparationRayShape3D_6k08s")
+spring_length = 10.0
+
+[node name="Camera3D" type="Camera3D" parent="SpringArm3D" unique_id=574541261]
+transform = Transform3D(1, 0, 0, 0, 0.9063079, -0.42261833, 0, 0.42261833, 0.9063079, 0, 0, 0)

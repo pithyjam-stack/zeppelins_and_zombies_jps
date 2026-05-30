@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://0r0arksxm35j"]
+
+[ext_resource type="Script" uid="uid://b3tg5jhdoaau" path="res://scenes/enemies/zombie_shield.gd" id="1_easwx"]
+[ext_resource type="Material" uid="uid://ynp4jvhtdc7m" path="res://materials/basic_cave_mat.tres" id="1_sb25j"]
+[ext_resource type="PackedScene" uid="uid://dgqo3lt6tn58d" path="res://scenes/player/health_component.tscn" id="3_6gb3l"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ksumr"]
+albedo_color = Color(0.34407577, 0.34407574, 0.34407574, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_easwx"]
+material = SubResource("StandardMaterial3D_ksumr")
+size = Vector3(1, 2, 0.2)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_6gb3l"]
+material = ExtResource("1_sb25j")
+radius = 0.1
+height = 1.5
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ayr0k"]
+size = Vector3(1, 2, 0.2)
+
+[node name="ZombieShield" type="Area3D" unique_id=1805662466]
+collision_layer = 9
+collision_mask = 5
+script = ExtResource("1_easwx")
+
+[node name="ProtoModel" type="Node3D" parent="." unique_id=643412163]
+
+[node name="Body" type="MeshInstance3D" parent="ProtoModel" unique_id=785430534]
+mesh = SubResource("BoxMesh_easwx")
+skeleton = NodePath("../..")
+
+[node name="Ridges" type="MeshInstance3D" parent="ProtoModel" unique_id=1990012564]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.1)
+mesh = SubResource("CapsuleMesh_6gb3l")
+
+[node name="Ridges2" type="MeshInstance3D" parent="ProtoModel" unique_id=712036525]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 0, 0.1)
+mesh = SubResource("CapsuleMesh_6gb3l")
+
+[node name="Ridges3" type="MeshInstance3D" parent="ProtoModel" unique_id=1674373781]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0, 0.1)
+mesh = SubResource("CapsuleMesh_6gb3l")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1562676404]
+shape = SubResource("BoxShape3D_ayr0k")
+
+[node name="HealthComponent" parent="." unique_id=263350021 instance=ExtResource("3_6gb3l")]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

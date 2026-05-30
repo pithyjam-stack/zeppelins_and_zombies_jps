@@ -1,11 +1,30 @@
 [gd_scene format=3 uid="uid://dpudyepafkry7"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8h8sg"]
-albedo_color = Color(1, 0.5294118, 0.29411766, 1)
+[ext_resource type="Script" uid="uid://dgylax3ck3dld" path="res://scenes/enemies/ball.gd" id="1_pumns"]
 
-[node name="ball" type="CSGSphere3D" unique_id=1716264385]
-use_collision = true
-collision_layer = 0
-collision_mask = 5
-radius = 0.2
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8h8sg"]
+albedo_color = Color(1, 0.6862745, 0.25882354, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_pumns"]
 material = SubResource("StandardMaterial3D_8h8sg")
+radius = 0.2
+height = 0.4
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_3ta3t"]
+radius = 0.4
+
+[node name="ball" type="Area3D" unique_id=1663321696]
+script = ExtResource("1_pumns")
+
+[node name="BallMesh" type="MeshInstance3D" parent="." unique_id=1453332244]
+mesh = SubResource("SphereMesh_pumns")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1299728386]
+shape = SubResource("SphereShape3D_3ta3t")
+
+[node name="Timer" type="Timer" parent="." unique_id=1569279752]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

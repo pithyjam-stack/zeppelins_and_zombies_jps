@@ -1,0 +1,103 @@
+[gd_scene format=3 uid="uid://dud5esie6t4yg"]
+
+[ext_resource type="Script" uid="uid://drorygfkh0d5f" path="res://scenes/enemies/tall_shieldling.gd" id="1_xbro7"]
+[ext_resource type="PackedScene" uid="uid://0r0arksxm35j" path="res://scenes/enemies/zombie_shield.tscn" id="2_3enrb"]
+[ext_resource type="PackedScene" uid="uid://dgqo3lt6tn58d" path="res://scenes/player/health_component.tscn" id="2_bocyf"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xbro7"]
+radius = 0.75
+height = 3.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mu0iw"]
+albedo_color = Color(0.52906674, 0.5290667, 0.5290667, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_vsdqm"]
+material = SubResource("StandardMaterial3D_mu0iw")
+radius = 0.75
+height = 3.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_lhiat"]
+radius = 0.2
+height = 0.4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jdbvs"]
+albedo_color = Color(1, 0.21568628, 0.20392157, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_4t00g"]
+radius = 0.1
+height = 0.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7yo0p"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_7yym5"]
+top_radius = 0.4
+bottom_radius = 0.4
+height = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_waxnv"]
+albedo_color = Color(0.4732359, 0, 0.04630114, 1)
+
+[node name="TallShieldling" type="CharacterBody3D" unique_id=185993919]
+collision_layer = 9
+collision_mask = 5
+script = ExtResource("1_xbro7")
+zom_shield = ExtResource("2_3enrb")
+max_health = 40.0
+damage = 15
+speed = 2.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=149472173]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_xbro7")
+
+[node name="ProtoModel" type="Node3D" parent="." unique_id=549559504]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="Body" type="MeshInstance3D" parent="ProtoModel" unique_id=128807816]
+mesh = SubResource("CapsuleMesh_vsdqm")
+
+[node name="Eyeball1" type="MeshInstance3D" parent="ProtoModel" unique_id=862016594]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 1.2, 0.5)
+mesh = SubResource("SphereMesh_lhiat")
+surface_material_override/0 = SubResource("StandardMaterial3D_jdbvs")
+
+[node name="Eyeball3" type="MeshInstance3D" parent="ProtoModel" unique_id=1963507092]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 1.3000001, 0.6)
+mesh = SubResource("SphereMesh_4t00g")
+surface_material_override/0 = SubResource("StandardMaterial3D_7yo0p")
+
+[node name="Eyeball4" type="MeshInstance3D" parent="ProtoModel" unique_id=1631581688]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 1.3000001, 0.6)
+mesh = SubResource("SphereMesh_4t00g")
+surface_material_override/0 = SubResource("StandardMaterial3D_7yo0p")
+
+[node name="Eyeball2" type="MeshInstance3D" parent="ProtoModel" unique_id=1982331261]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.29999998, 1.2, 0.5)
+mesh = SubResource("SphereMesh_lhiat")
+surface_material_override/0 = SubResource("StandardMaterial3D_jdbvs")
+
+[node name="Mouth1" type="MeshInstance3D" parent="ProtoModel" unique_id=1780195524]
+transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, 0, 0.7969847, 0.61710095)
+mesh = SubResource("CylinderMesh_7yym5")
+surface_material_override/0 = SubResource("StandardMaterial3D_waxnv")
+
+[node name="Mouth2" type="MeshInstance3D" parent="ProtoModel" unique_id=1806357664]
+transform = Transform3D(1, 0, 0, 0, 0.8191521, -0.57357645, 0, 0.57357645, 0.8191521, 0, 0.7030153, 0.582899)
+mesh = SubResource("CylinderMesh_7yym5")
+surface_material_override/0 = SubResource("StandardMaterial3D_waxnv")
+
+[node name="Marker3D" type="Marker3D" parent="ProtoModel" unique_id=805747827]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.9604645e-08, 1.2)
+
+[node name="HealthComponent" parent="." unique_id=263350021 instance=ExtResource("2_bocyf")]
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=566375047]
+avoidance_enabled = true
+debug_enabled = true
+
+[node name="Timer" type="Timer" parent="." unique_id=1657680735]
+wait_time = 1.5
+autostart = true
+
+[connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
