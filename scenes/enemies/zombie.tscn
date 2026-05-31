@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://ccfsg66w7eqvk"]
 
 [ext_resource type="Script" uid="uid://djxskcqyo0k8g" path="res://scenes/enemies/zombie.gd" id="1_gl10n"]
+[ext_resource type="PackedScene" uid="uid://cu3n4m4et8t3q" path="res://scenes/enemies/area_attack.tscn" id="2_a0lpg"]
 [ext_resource type="PackedScene" uid="uid://dgqo3lt6tn58d" path="res://scenes/player/health_component.tscn" id="2_rdvt3"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6xk8f"]
@@ -30,6 +31,8 @@ height = 0.1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n7575"]
 albedo_color = Color(0.4732359, 0, 0.04630114, 1)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gl10n"]
 
 [node name="Zombie" type="CharacterBody3D" unique_id=2114948265]
 collision_layer = 9
@@ -76,10 +79,19 @@ transform = Transform3D(1, 0, 0, 0, 0.96592593, -0.25881907, 0, 0.25881907, 0.96
 mesh = SubResource("CylinderMesh_jt03m")
 surface_material_override/0 = SubResource("StandardMaterial3D_n7575")
 
+[node name="PlayerDetector" type="ShapeCast3D" parent="ProtoModel" unique_id=280266892]
+shape = SubResource("CapsuleShape3D_gl10n")
+target_position = Vector3(0, 0, 1)
+collision_mask = 4
+
+[node name="AreaAttack" parent="ProtoModel" unique_id=688239943 instance=ExtResource("2_a0lpg")]
+target_position = Vector3(0, 0, 1)
+
 [node name="HealthComponent" parent="." unique_id=263350021 instance=ExtResource("2_rdvt3")]
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1691835354]
 avoidance_enabled = true
 debug_enabled = true
 
+[connection signal="defeat" from="HealthComponent" to="." method="_on_health_component_defeat"]
 [connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]

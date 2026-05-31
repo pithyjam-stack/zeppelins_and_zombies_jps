@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://drorygfkh0d5f" path="res://scenes/enemies/tall_shieldling.gd" id="1_xbro7"]
 [ext_resource type="PackedScene" uid="uid://0r0arksxm35j" path="res://scenes/enemies/zombie_shield.tscn" id="2_3enrb"]
 [ext_resource type="PackedScene" uid="uid://dgqo3lt6tn58d" path="res://scenes/player/health_component.tscn" id="2_bocyf"]
+[ext_resource type="PackedScene" uid="uid://cu3n4m4et8t3q" path="res://scenes/enemies/area_attack.tscn" id="3_3enrb"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xbro7"]
 radius = 0.75
@@ -36,6 +37,10 @@ height = 0.1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_waxnv"]
 albedo_color = Color(0.4732359, 0, 0.04630114, 1)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_bocyf"]
+height = 3.0
+radius = 0.75
 
 [node name="TallShieldling" type="CharacterBody3D" unique_id=185993919]
 collision_layer = 9
@@ -88,6 +93,15 @@ surface_material_override/0 = SubResource("StandardMaterial3D_waxnv")
 
 [node name="Marker3D" type="Marker3D" parent="ProtoModel" unique_id=805747827]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.9604645e-08, 1.2)
+
+[node name="PlayerDetector" type="ShapeCast3D" parent="ProtoModel" unique_id=1270274310]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+shape = SubResource("CylinderShape3D_bocyf")
+target_position = Vector3(0, 1, 1.5)
+collision_mask = 4
+
+[node name="AreaAttack" parent="ProtoModel" unique_id=688239943 instance=ExtResource("3_3enrb")]
+target_position = Vector3(0, -0.5, 1.5)
 
 [node name="HealthComponent" parent="." unique_id=263350021 instance=ExtResource("2_bocyf")]
 
