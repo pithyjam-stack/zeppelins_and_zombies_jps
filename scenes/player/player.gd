@@ -17,6 +17,8 @@ var path_distance: float = 0.0
 var side_offset : float = 0.0
 
 @onready var curve = path.curve
+@onready var center_pivot: Node3D = $CenterPivot
+@onready var hand_position: Node3D = $CenterPivot/HandPosition
 
 
 func _physics_process(delta: float) -> void:
@@ -65,6 +67,9 @@ func _rotate_camera_to_path_direction(local_tangent: Vector3, delta: float) -> v
 	var turn_weight := clampf(rotation_smoothness * delta, 0.0, 1.0)
 	$CameraHandle.global_basis = $CameraHandle.global_basis.slerp(target_basis, turn_weight)
 
+func _aim_weapon_at_position(direction: Vector3, delta: float) -> void:
+	hand_position.global_basis = Basis.looking_at(direction, Vector3.UP)
+
 func _rotate_to_direction(local_direction: Vector3, delta: float) -> void:
 	var world_direction := path.global_transform.basis * local_direction
 	world_direction.y = 0.0
@@ -76,3 +81,4 @@ func _rotate_to_direction(local_direction: Vector3, delta: float) -> void:
 	var target_basis := Basis.looking_at(world_direction, Vector3.UP)
 	var turn_weight := clampf(rotation_smoothness * delta, 0.0, 1.0)
 	$MeshInstance3D.global_basis = $MeshInstance3D.global_basis.slerp(target_basis, turn_weight)
+	center_pivot.global_basis = center_pivot.global_basis.slerp(target_basis, turn_weight)
