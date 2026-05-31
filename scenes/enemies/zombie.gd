@@ -9,13 +9,20 @@ class_name Zombie
 @onready var health_component: HealthComponent = $HealthComponent
 @onready var navigation_agent_3d: NavigationAgent3D = $NavigationAgent3D
 @onready var proto_model: Node3D = $ProtoModel
+@onready var player_detector: ShapeCast3D = $ProtoModel/PlayerDetector
 
 @onready var player: Player = get_tree().get_first_node_in_group("Player")
 
 func _ready() -> void:
 	health_component.update_max_health(max_health)
 
+func check_for_attacks() -> void:
+	for collision_id in player_detector.get_collision_count():
+		var collider = player_detector.get_collider(collision_id)
+	
 func _physics_process(delta: float) -> void:
+	check_for_attacks()
+	
 	var velocity_target := Vector3.ZERO
 	navigation_agent_3d.target_position = player.global_position
 	if not navigation_agent_3d.is_target_reached():
@@ -35,7 +42,9 @@ func get_local_navigation_direction() -> Vector3:
 	var local_destination = destination - global_position
 	return local_destination.normalized()
 
-
 func _on_navigation_agent_3d_velocity_computed(safe_velocity: Vector3) -> void:
 	velocity = safe_velocity
 	move_and_slide()
+
+func _on_health_component_defeat() -> void:
+	queue_free()

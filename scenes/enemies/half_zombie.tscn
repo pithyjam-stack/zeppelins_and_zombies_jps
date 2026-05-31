@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://chw2neoyjaihg" path="res://scenes/enemies/half_zombie.gd" id="1_g8b84"]
 [ext_resource type="PackedScene" uid="uid://dgqo3lt6tn58d" path="res://scenes/player/health_component.tscn" id="2_ru6kr"]
+[ext_resource type="PackedScene" uid="uid://cu3n4m4et8t3q" path="res://scenes/enemies/area_attack.tscn" id="3_boq17"]
 [ext_resource type="PackedScene" uid="uid://dpudyepafkry7" path="res://scenes/enemies/ball.tscn" id="3_ru6kr"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_jda86"]
@@ -32,6 +33,8 @@ height = 0.1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3oc2p"]
 albedo_color = Color(0.4732359, 0, 0.04630114, 1)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ru6kr"]
 
 [node name="HalfZombie" type="CharacterBody3D" unique_id=185993919]
 collision_layer = 9
@@ -78,6 +81,14 @@ surface_material_override/0 = SubResource("StandardMaterial3D_3oc2p")
 transform = Transform3D(1, 0, 0, 0, 0.96592593, -0.25881907, 0, 0.25881907, 0.96592593, 0, 1.4901161e-08, 0.4)
 mesh = SubResource("CylinderMesh_hkptg")
 surface_material_override/0 = SubResource("StandardMaterial3D_3oc2p")
+
+[node name="PlayerDetector" type="ShapeCast3D" parent="ProtoModel" unique_id=774262982]
+shape = SubResource("CapsuleShape3D_ru6kr")
+target_position = Vector3(0, 0.5, 1)
+collision_mask = 4
+
+[node name="AreaAttack" parent="ProtoModel" unique_id=688239943 instance=ExtResource("3_boq17")]
+target_position = Vector3(0, 0.5, 1)
 
 [node name="HealthComponent" parent="." unique_id=263350021 instance=ExtResource("2_ru6kr")]
 
