@@ -21,8 +21,9 @@ func _process(delta: float) -> void:
 	
 	var collider := ray_cast_3d.get_collider()
 	if ray_cast_3d.is_colliding():
-		if !collider.is_in_group("Playerf"):
+		if !collider.is_in_group("Player"):
 			#shape.global_position = ray_cast_3d.get_collision_point()
 			var direction : Vector3 = ray_cast_3d.get_collision_point() - player.global_position
 			player._rotate_to_direction(direction, delta)
+			player._aim_weapon_at_position(direction, delta)
 	

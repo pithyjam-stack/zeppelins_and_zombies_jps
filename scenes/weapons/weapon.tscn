@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://3ibmediqf6lp"]
+
+[ext_resource type="Script" uid="uid://cer8g6xw33f3m" path="res://scenes/weapons/weapon.gd" id="1_nqevj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nqevj"]
+albedo_color = Color(1, 0.20392157, 0.17254902, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_eo7p8"]
+material = SubResource("StandardMaterial3D_nqevj")
+size = Vector3(0.2, 0.2, 0.7)
+
+[sub_resource type="BoxMesh" id="BoxMesh_bjmcy"]
+size = Vector3(0.2, 0.2, 0.7)
+
+[node name="Weapon" type="Node3D" unique_id=457058281]
+script = ExtResource("1_nqevj")
+
+[node name="Model" type="Node3D" parent="." unique_id=268116546]
+
+[node name="Barrel" type="MeshInstance3D" parent="Model" unique_id=1813716118]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.18208604)
+mesh = SubResource("BoxMesh_eo7p8")
+skeleton = NodePath("../..")
+
+[node name="Handle" type="MeshInstance3D" parent="Model" unique_id=1728936958]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, -0.2168373, 0.26751888)
+mesh = SubResource("BoxMesh_bjmcy")
+skeleton = NodePath("../..")
+
+[node name="Muzzle" type="Node3D" parent="." unique_id=8583767]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.54848313)
+
+[node name="Fire_Rate_Timer" type="Timer" parent="." unique_id=2129427763]
+one_shot = true
+
+[node name="Reloading_Timer" type="Timer" parent="." unique_id=1148589388]
+one_shot = true
