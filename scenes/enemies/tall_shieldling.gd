@@ -4,7 +4,6 @@ extends Zombie
 
 @onready var marker_3d: Marker3D = $ProtoModel/Marker3D
 
-
 func _ready() -> void:
 	super._ready()
 	

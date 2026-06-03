@@ -25,7 +25,8 @@ func _on_life_timer_timeout() -> void:
 
 
 func _on_body_entered(body: Node3D) -> void:
-	if body is Zombie:
+	if body is Zombie or Zom_Armor:
 		var health_com = body.get_node_or_null("HealthComponent")
 		if health_com:
 			health_com.take_damage(damage)
+			queue_free()

@@ -19,7 +19,7 @@ height = 1.5
 [sub_resource type="BoxShape3D" id="BoxShape3D_ayr0k"]
 size = Vector3(1, 2, 0.2)
 
-[node name="ZombieShield" type="Area3D" unique_id=1805662466]
+[node name="ZombieShield" type="Area3D" unique_id=1805662466 groups=["Enemy"]]
 collision_layer = 9
 collision_mask = 5
 script = ExtResource("1_easwx")
@@ -47,4 +47,4 @@ shape = SubResource("BoxShape3D_ayr0k")
 
 [node name="HealthComponent" parent="." unique_id=263350021 instance=ExtResource("3_6gb3l")]
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

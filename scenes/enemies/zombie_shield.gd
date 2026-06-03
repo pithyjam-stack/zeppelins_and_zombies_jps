@@ -1,5 +1,7 @@
 extends Area3D
 
+class_name Zom_Armor
+
 @export var max_strength := 20.0
 @export var current_strength := 20.0
 
@@ -12,8 +14,10 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if health_component.current_health <= 0:
 		queue_free()
+	
 
 # Placeholder for when player shoots shield
-func _on_body_entered(body: Node3D) -> void:
+func _on_area_entered(area: Area3D) -> void:
 	health_component.take_damage(2)
 	print("taking damage!")
+	
