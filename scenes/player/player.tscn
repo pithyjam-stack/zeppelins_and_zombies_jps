@@ -2,10 +2,8 @@
 
 [ext_resource type="Material" uid="uid://b18g257a6b6y0" path="res://materials/debug_good_mat.tres" id="1_8afob"]
 [ext_resource type="Script" uid="uid://cs1b0s645vbuo" path="res://scenes/player/player.gd" id="1_dovo2"]
+[ext_resource type="PackedScene" uid="uid://b6e67utmikg8o" path="res://scenes/weapons/pistol_weapon.tscn" id="2_lvxji"]
 [ext_resource type="PackedScene" uid="uid://bm3v2famfv788" path="res://scenes/player/ray_camera.tscn" id="3_gmlin"]
-[ext_resource type="PackedScene" uid="uid://3ibmediqf6lp" path="res://scenes/weapons/weapon.tscn" id="4_lvxji"]
-[ext_resource type="PackedScene" uid="uid://cc0win1xceu2h" path="res://scenes/weapons/projectile.tscn" id="5_75vfm"]
-[ext_resource type="Script" uid="uid://bgqahyr6to5nh" path="res://resources/WeaponStats.gd" id="5_p47bc"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dovo2"]
 
@@ -16,19 +14,11 @@ material = ExtResource("1_8afob")
 radius = 0.2
 height = 0.4
 
-[sub_resource type="Resource" id="Resource_75vfm"]
-script = ExtResource("5_p47bc")
-weapon_name = "Pistol"
-damage = 5
-magazine_capacity = 8
-reload_time = 1.0
-projectile_scene = ExtResource("5_75vfm")
-metadata/_custom_type_script = "uid://bgqahyr6to5nh"
-
 [node name="Player" type="CharacterBody3D" unique_id=230586961 groups=["Player"]]
 collision_layer = 5
 collision_mask = 9
 script = ExtResource("1_dovo2")
+starting_weapon = ExtResource("2_lvxji")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=15050518]
 shape = SubResource("CapsuleShape3D_dovo2")
@@ -53,7 +43,3 @@ transform = Transform3D(-4.371139e-08, 0.4616557, -0.8870592, 0, 0.8870592, 0.46
 
 [node name="HandPosition" type="Node3D" parent="CenterPivot" unique_id=1476521204]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.533473, 0, -0.5308655)
-
-[node name="Weapon" parent="CenterPivot/HandPosition" unique_id=457058281 instance=ExtResource("4_lvxji")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.17138195, -0.15136832)
-stats = SubResource("Resource_75vfm")

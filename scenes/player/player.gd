@@ -68,7 +68,7 @@ func _physics_process(delta: float) -> void:
 func add_weapon(new_weapon: PackedScene):
 	var new_weapon_inst = starting_weapon.instantiate() as Weapon
 	hand_position.add_child(new_weapon_inst)
-	new_weapon_inst.position = hand_position.position
+	new_weapon_inst.global_position = hand_position.global_position + Vector3(-0.1, 0, -0.1)
 	owned_weapons.append(new_weapon_inst)
 	new_weapon_inst.set_active(false)
 
