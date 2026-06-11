@@ -9,6 +9,8 @@ class_name Player
 @export var horizontal_speed := 5.0
 @export var lateral_speed := 2.0
 @export var rotation_smoothness := 10.0
+@export var aim_down_min_angle = -0.1
+@export var aim_up_max_angle = 100
 
 const JUMP_VELOCITY = 4.5
 
@@ -68,6 +70,9 @@ func _rotate_camera_to_path_direction(local_tangent: Vector3, delta: float) -> v
 	$CameraHandle.global_basis = $CameraHandle.global_basis.slerp(target_basis, turn_weight)
 
 func _aim_weapon_at_position(direction: Vector3, delta: float) -> void:
+	direction = direction.normalized()
+	direction.y = clampf(direction.y, aim_down_min_angle, aim_up_max_angle)
+	direction = direction.normalized()
 	hand_position.global_basis = Basis.looking_at(direction, Vector3.UP)
 
 func _rotate_to_direction(local_direction: Vector3, delta: float) -> void:

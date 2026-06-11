@@ -18,12 +18,15 @@ height = 0.4
 
 [sub_resource type="Resource" id="Resource_75vfm"]
 script = ExtResource("5_p47bc")
-weapon_name = "Pistorl"
+weapon_name = "Pistol"
+weapon_firing_mode = 1
 damage = 5
-magazine_capacity = 10
-reload_time = 1.0
+magazine_capacity = 30
+reload_time = 0.5
 fire_frequency = 0.2
 projectile_scene = ExtResource("5_75vfm")
+projectile_count = 5
+spread = 10.0
 metadata/_custom_type_script = "uid://bgqahyr6to5nh"
 
 [node name="Player" type="CharacterBody3D" unique_id=230586961 groups=["Player"]]

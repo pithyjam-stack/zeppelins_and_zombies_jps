@@ -20,13 +20,13 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
-
-func _unhandled_input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("shoot") and stats.weapon_firing_mode ==  stats.FiringMode.SEMI:
 		try_shoot()
 	elif Input.is_action_pressed("shoot") and stats.weapon_firing_mode == stats.FiringMode.AUTO:
 		try_shoot()
+
+func _unhandled_input(event: InputEvent) -> void:
+	pass
 
 func try_shoot() -> void:
 	if not can_fire:
@@ -56,9 +56,13 @@ func shoot() -> void:
 		projectile.global_position = muzzle.global_position
 		projectile.global_rotation = global_rotation
 		
-		var spread := randf_range(-stats.spread, stats.spread)
-		projectile.rotate_y(deg_to_rad(spread))
-		projectile.set_values(-muzzle.global_transform.basis.z, stats.damage)
+		var spread_horizontal := deg_to_rad(randf_range(-stats.spread, stats.spread))
+		var spread_vertical := deg_to_rad(randf_range(-stats.spread, stats.spread))
+		projectile.rotate_y(spread_horizontal)
+		projectile.rotate_x(spread_vertical)
+		var firing_direction = -muzzle.global_transform.basis.z  + Vector3(-spread_horizontal,spread_vertical,0)
+		firing_direction = firing_direction.normalized()
+		projectile.set_values(firing_direction, stats.damage)
 
 func reload() -> void:
 	print("Reloading...")
