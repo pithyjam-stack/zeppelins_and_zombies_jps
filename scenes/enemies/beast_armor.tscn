@@ -1,0 +1,93 @@
+[gd_scene format=3 uid="uid://bpr4s8wrxgtox"]
+
+[ext_resource type="Script" uid="uid://dtol0xqaw7e0v" path="res://scenes/enemies/beast_armor.gd" id="1_w7npq"]
+[ext_resource type="Material" uid="uid://7kuc0iki101d" path="res://materials/bone_plate_mat.tres" id="2_41sf1"]
+[ext_resource type="PackedScene" uid="uid://dgqo3lt6tn58d" path="res://scenes/player/health_component.tscn" id="2_tto5w"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jkd7k"]
+radius = 0.7
+height = 3.0
+
+[sub_resource type="PrismMesh" id="PrismMesh_jkd7k"]
+material = ExtResource("2_41sf1")
+left_to_right = 0.0
+size = Vector3(0.5, 0.6, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_fgnne"]
+material = ExtResource("2_41sf1")
+size = Vector3(0.1, 0.3, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_uqhia"]
+material = ExtResource("2_41sf1")
+size = Vector3(0.6, 0.4, 0.1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_h3q7m"]
+material = ExtResource("2_41sf1")
+size = Vector3(0.6, 0.5, 0.2)
+
+[sub_resource type="PrismMesh" id="PrismMesh_u5kj4"]
+material = ExtResource("2_41sf1")
+size = Vector3(0.6, 0.4, 0.2)
+
+[node name="BeastArmor" type="Area3D" unique_id=329523277]
+collision_layer = 9
+collision_mask = 5
+script = ExtResource("1_w7npq")
+max_strength = 10.0
+current_strength = 10.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1651149682]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, -0.5, 0)
+shape = SubResource("CapsuleShape3D_jkd7k")
+
+[node name="ProtoModel" type="Node3D" parent="." unique_id=1360635947]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6, 0)
+
+[node name="FrontPlate" type="MeshInstance3D" parent="ProtoModel" unique_id=77730042]
+transform = Transform3D(0.9848077, -0.07338689, -0.15737869, -0.1736482, -0.41619778, -0.89253896, 0, 0.9063079, -0.42261833, 0.3, 0.39999998, 0.90000004)
+mesh = SubResource("PrismMesh_jkd7k")
+
+[node name="FrontPlate2" type="MeshInstance3D" parent="ProtoModel" unique_id=1862620132]
+transform = Transform3D(-0.96592575, 0.12940954, -0.22414392, -0.2588191, -0.48296306, 0.8365164, -5.1048772e-08, 0.8660255, 0.50000006, -0.29999998, 0.39999998, 0.90000004)
+mesh = SubResource("PrismMesh_jkd7k")
+
+[node name="SidePlate" type="MeshInstance3D" parent="ProtoModel" unique_id=339861405]
+transform = Transform3D(0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 0, 0, 1, -0.5, 0.3, 0)
+mesh = SubResource("BoxMesh_fgnne")
+
+[node name="SidePlate2" type="MeshInstance3D" parent="ProtoModel" unique_id=1878435379]
+transform = Transform3D(0.9659258, -0.258819, 0, 0.258819, 0.9659258, 0, 0, 0, 1, -0.6, 0.10000001, 0)
+mesh = SubResource("BoxMesh_fgnne")
+
+[node name="SidePlate3" type="MeshInstance3D" parent="ProtoModel" unique_id=1065559402]
+transform = Transform3D(-0.8660254, -0.5, -8.742278e-08, -0.5, 0.8660254, 0, 7.5710346e-08, 4.371139e-08, -1, 0.39999998, 0.3, 4.37114e-09)
+mesh = SubResource("BoxMesh_fgnne")
+
+[node name="SidePlate4" type="MeshInstance3D" parent="ProtoModel" unique_id=250231408]
+transform = Transform3D(-0.96592593, 0.25881904, -8.7422784e-08, 0.25881904, 0.96592593, 0, 8.444392e-08, -2.2626677e-08, -1, 0.5, 0.10000001, -4.37114e-09)
+mesh = SubResource("BoxMesh_fgnne")
+
+[node name="SpinePlate" type="MeshInstance3D" parent="ProtoModel" unique_id=1309932283]
+transform = Transform3D(1, 0, 0, 0, -0.1736482, -0.9848077, 0, 0.9848077, -0.1736482, 0, 0.5, 0.6)
+mesh = SubResource("PrismMesh_uqhia")
+
+[node name="SpinePlate2" type="MeshInstance3D" parent="ProtoModel" unique_id=1074112374]
+transform = Transform3D(1, 0, 0, 0, -0.3420202, -0.9396927, 0, 0.9396927, -0.3420202, 0, 0.5, 0.3)
+mesh = SubResource("PrismMesh_h3q7m")
+
+[node name="SpinePlate3" type="MeshInstance3D" parent="ProtoModel" unique_id=45005639]
+transform = Transform3D(1, 0, 0, 0, -0.3420202, -0.9396927, 0, 0.9396927, -0.3420202, 0, 0.5, 0)
+mesh = SubResource("PrismMesh_u5kj4")
+
+[node name="SpinePlate4" type="MeshInstance3D" parent="ProtoModel" unique_id=1331222735]
+transform = Transform3D(1, 0, 0, 0, -0.1736482, -0.9848077, 0, 0.9848077, -0.1736482, 0, 0.5, -0.3)
+mesh = SubResource("PrismMesh_uqhia")
+
+[node name="SpinePlate5" type="MeshInstance3D" parent="ProtoModel" unique_id=1959467166]
+transform = Transform3D(1, 0, 0, 0, 0.2588191, -0.96592593, 0, 0.96592593, 0.2588191, 0, 0.45462036, -0.6328205)
+mesh = SubResource("PrismMesh_uqhia")
+
+[node name="HealthComponent" parent="." unique_id=263350021 instance=ExtResource("2_tto5w")]
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="defeat" from="HealthComponent" to="." method="_on_health_component_defeat"]

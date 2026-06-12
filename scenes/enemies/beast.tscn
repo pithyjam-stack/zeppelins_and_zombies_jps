@@ -1,0 +1,268 @@
+[gd_scene format=3 uid="uid://ce7m6xiof1hb6"]
+
+[ext_resource type="PackedScene" uid="uid://dgqo3lt6tn58d" path="res://scenes/player/health_component.tscn" id="1_1o7wf"]
+[ext_resource type="Script" uid="uid://djsialuns27v8" path="res://scenes/enemies/beast.gd" id="1_mi8ht"]
+[ext_resource type="Material" uid="uid://corwsmjeloxqj" path="res://materials/beast_mat.tres" id="2_kby84"]
+[ext_resource type="PackedScene" uid="uid://bpr4s8wrxgtox" path="res://scenes/enemies/beast_armor.tscn" id="2_n13rj"]
+[ext_resource type="PackedScene" uid="uid://cu3n4m4et8t3q" path="res://scenes/enemies/area_attack.tscn" id="3_citb0"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mi8ht"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_xl3qt"]
+radius = 0.01
+height = 0.15
+
+[sub_resource type="BoxMesh" id="BoxMesh_kby84"]
+material = ExtResource("2_kby84")
+size = Vector3(0.2, 0.5, 0.2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_citb0"]
+material = ExtResource("2_kby84")
+size = Vector3(0.2, 0.5, 0.2)
+
+[sub_resource type="SphereMesh" id="SphereMesh_n13rj"]
+material = ExtResource("2_kby84")
+radius = 0.3
+height = 0.6
+radial_segments = 32
+rings = 16
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_citb0"]
+material = ExtResource("2_kby84")
+
+[sub_resource type="PrismMesh" id="PrismMesh_n13rj"]
+material = ExtResource("2_kby84")
+size = Vector3(0.8, 1, 0.6)
+
+[sub_resource type="PrismMesh" id="PrismMesh_hq3mj"]
+material = ExtResource("2_kby84")
+size = Vector3(0.8, 1, 0.2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_18ro0"]
+albedo_color = Color(0.83, 0, 0, 1)
+emission_enabled = true
+emission = Color(0.87, 0.03480002, 0.03480002, 1)
+emission_energy_multiplier = 10.0
+
+[sub_resource type="PrismMesh" id="PrismMesh_f3tqf"]
+material = SubResource("StandardMaterial3D_18ro0")
+size = Vector3(0.2, 0.5, 0.2)
+
+[sub_resource type="PrismMesh" id="PrismMesh_18ro0"]
+left_to_right = 0.3
+size = Vector3(0.2, 0.3, 0.05)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_bocyf"]
+height = 3.0
+radius = 0.75
+
+[node name="Beast" type="CharacterBody3D" unique_id=523339716 groups=["Enemy"]]
+script = ExtResource("1_mi8ht")
+zom_armor = ExtResource("2_n13rj")
+damage = 5
+speed = 10.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1484143956]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+top_level = true
+shape = SubResource("CapsuleShape3D_mi8ht")
+
+[node name="ProtoModel" type="Node3D" parent="." unique_id=243465890]
+
+[node name="Teeth" type="Node3D" parent="ProtoModel" unique_id=765531765]
+
+[node name="Tooth" type="MeshInstance3D" parent="ProtoModel/Teeth" unique_id=1352736231]
+transform = Transform3D(1, 0, 0, 0, 0.8660254, -0.5, 0, 0.5, 0.8660254, -0.018234305, -0.30235958, 1.3906652)
+mesh = SubResource("SphereMesh_xl3qt")
+
+[node name="Tooth2" type="MeshInstance3D" parent="ProtoModel/Teeth" unique_id=656021258]
+transform = Transform3D(1, 0, 0, 0, 0.8660254, -0.5, 0, 0.5, 0.8660254, 0.023048595, -0.30235958, 1.3906652)
+mesh = SubResource("SphereMesh_xl3qt")
+
+[node name="Tooth3" type="MeshInstance3D" parent="ProtoModel/Teeth" unique_id=1250986723]
+transform = Transform3D(1, 0, 0, 0, 0.8660254, -0.5, 0, 0.5, 0.8660254, -0.03811434, -0.27395034, 1.3582951)
+mesh = SubResource("SphereMesh_xl3qt")
+
+[node name="Tooth4" type="MeshInstance3D" parent="ProtoModel/Teeth" unique_id=254060715]
+transform = Transform3D(1, 0, 0, 0, 0.8660254, -0.5, 0, 0.5, 0.8660254, 0.039644986, -0.27395034, 1.3582951)
+mesh = SubResource("SphereMesh_xl3qt")
+
+[node name="Tooth5" type="MeshInstance3D" parent="ProtoModel/Teeth" unique_id=793592543]
+transform = Transform3D(1, 0, 0, 0, 0.8660254, -0.5, 0, 0.5, 0.8660254, -0.053775646, -0.24330248, 1.3039641)
+mesh = SubResource("SphereMesh_xl3qt")
+
+[node name="Tooth6" type="MeshInstance3D" parent="ProtoModel/Teeth" unique_id=1897090211]
+transform = Transform3D(1, 0, 0, 0, 0.8660254, -0.5, 0, 0.5, 0.8660254, 0.05805525, -0.24330248, 1.3039641)
+mesh = SubResource("SphereMesh_xl3qt")
+
+[node name="Tooth7" type="MeshInstance3D" parent="ProtoModel/Teeth" unique_id=208538467]
+transform = Transform3D(-1, -7.5710346e-08, 4.371139e-08, 8.742278e-08, -0.8660254, 0.5, 0, 0.5, 0.8660254, 0.03831283, -0.05000709, 1.4496108)
+mesh = SubResource("SphereMesh_xl3qt")
+
+[node name="Tooth8" type="MeshInstance3D" parent="ProtoModel/Teeth" unique_id=71523029]
+transform = Transform3D(-1, -7.5710346e-08, 4.371139e-08, 8.742278e-08, -0.8660254, 0.5, 0, 0.5, 0.8660254, -0.039180726, -0.05000709, 1.4496108)
+mesh = SubResource("SphereMesh_xl3qt")
+
+[node name="Tooth9" type="MeshInstance3D" parent="ProtoModel/Teeth" unique_id=1889718502]
+transform = Transform3D(-1, -7.5710346e-08, 4.371139e-08, 8.742278e-08, -0.8660254, 0.5, 0, 0.5, 0.8660254, 0.07140334, -0.05319999, 1.428288)
+mesh = SubResource("SphereMesh_xl3qt")
+
+[node name="Tooth10" type="MeshInstance3D" parent="ProtoModel/Teeth" unique_id=1570743816]
+transform = Transform3D(-1, -7.5710346e-08, 4.371139e-08, 8.742278e-08, -0.8660254, 0.5, 0, 0.5, 0.8660254, -0.07808164, -0.05319999, 1.428288)
+mesh = SubResource("SphereMesh_xl3qt")
+
+[node name="Tooth11" type="MeshInstance3D" parent="ProtoModel/Teeth" unique_id=872737138]
+transform = Transform3D(-1, -7.5710346e-08, 4.371139e-08, 8.742278e-08, -0.8660254, 0.5, 0, 0.5, 0.8660254, 0.11510511, -0.08384786, 1.373957)
+mesh = SubResource("SphereMesh_xl3qt")
+
+[node name="Tooth12" type="MeshInstance3D" parent="ProtoModel/Teeth" unique_id=539961629]
+transform = Transform3D(-1, -7.5710346e-08, 4.371139e-08, 8.742278e-08, -0.8660254, 0.5, 0, 0.5, 0.8660254, -0.11980957, -0.08384784, 1.373957)
+mesh = SubResource("SphereMesh_xl3qt")
+
+[node name="Legs" type="Node3D" parent="ProtoModel" unique_id=564785606]
+
+[node name="Leg" type="MeshInstance3D" parent="ProtoModel/Legs" unique_id=752883245]
+transform = Transform3D(0.9659258, -0.22414386, 0.12940952, 0.25881904, 0.83651626, -0.4829629, 0, 0.5, 0.8660254, 0.70000005, 0, 0.5)
+mesh = SubResource("BoxMesh_kby84")
+
+[node name="Leg5" type="MeshInstance3D" parent="ProtoModel/Legs" unique_id=90048233]
+transform = Transform3D(1.0000001, 2.9802322e-08, 2.2351742e-08, -9.578282e-09, 0.9396926, 0.3420201, 1.1414952e-08, -0.34202012, 0.93969274, 0.76448005, -0.25, 0.5)
+mesh = SubResource("BoxMesh_kby84")
+
+[node name="Leg6" type="MeshInstance3D" parent="ProtoModel/Legs" unique_id=1758706649]
+transform = Transform3D(1.0000001, 2.9802322e-08, 2.2351742e-08, -9.578282e-09, 0.9396926, 0.3420201, 1.1414952e-08, -0.34202012, 0.93969274, -0.76894647, -0.25, 0.5)
+mesh = SubResource("BoxMesh_kby84")
+
+[node name="Leg4" type="MeshInstance3D" parent="ProtoModel/Legs" unique_id=597318390]
+transform = Transform3D(0.9659258, 0.22414388, -0.1294095, -0.25881898, 0.83651626, -0.48296294, -2.2097868e-08, 0.5, 0.8660254, -0.70000005, 0, 0.5)
+mesh = SubResource("BoxMesh_citb0")
+
+[node name="Leg2" type="MeshInstance3D" parent="ProtoModel/Legs" unique_id=436526827]
+transform = Transform3D(0.9659258, -0.22414386, 0.12940952, 0.25881904, 0.83651626, -0.4829629, 0, 0.5, 0.8660254, 0.70000005, 0, -0.6)
+mesh = SubResource("BoxMesh_kby84")
+
+[node name="Leg7" type="MeshInstance3D" parent="ProtoModel/Legs" unique_id=553023217]
+transform = Transform3D(1.0000001, 2.9802322e-08, 2.2351742e-08, -9.578282e-09, 0.9396926, 0.3420201, 1.1414952e-08, -0.34202012, 0.93969274, 0.76448005, -0.25, -0.6)
+mesh = SubResource("BoxMesh_kby84")
+
+[node name="Leg8" type="MeshInstance3D" parent="ProtoModel/Legs" unique_id=1234011426]
+transform = Transform3D(1.0000001, 2.9802322e-08, 2.2351742e-08, -9.578282e-09, 0.9396926, 0.3420201, 1.1414952e-08, -0.34202012, 0.93969274, -0.76894647, -0.25, -0.6)
+mesh = SubResource("BoxMesh_kby84")
+
+[node name="Leg9" type="MeshInstance3D" parent="ProtoModel/Legs" unique_id=2040826612]
+transform = Transform3D(0.9659258, 0.22414388, -0.1294095, -0.25881898, 0.83651626, -0.48296294, -2.2097868e-08, 0.5, 0.8660254, -0.70000005, 0, -0.6)
+mesh = SubResource("BoxMesh_citb0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ProtoModel/Legs" unique_id=83529017]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.20000002, -0.4)
+mesh = SubResource("SphereMesh_n13rj")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="ProtoModel/Legs" unique_id=1843173431]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.20000002, -0.4)
+mesh = SubResource("SphereMesh_n13rj")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="ProtoModel/Legs" unique_id=1807286465]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.20000002, 0.5)
+mesh = SubResource("SphereMesh_n13rj")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="ProtoModel/Legs" unique_id=292747919]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.20000002, 0.5)
+mesh = SubResource("SphereMesh_n13rj")
+
+[node name="Node3D" type="Node3D" parent="ProtoModel" unique_id=1863752297]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ProtoModel/Node3D" unique_id=1590494012]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_citb0")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="ProtoModel/Node3D" unique_id=983675267]
+transform = Transform3D(-4.371139e-08, -4.371139e-08, -1, -1, 1.9106855e-15, 4.371139e-08, 0, 1, -4.371139e-08, 0, 0, 1)
+mesh = SubResource("PrismMesh_n13rj")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="ProtoModel/Node3D" unique_id=869866934]
+transform = Transform3D(-1, 3.821371e-15, 8.742278e-08, 7.5710346e-08, -0.49999997, 0.8660254, 4.371139e-08, 0.8660254, 0.49999997, 0, -0.2, 1)
+mesh = SubResource("PrismMesh_hq3mj")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="ProtoModel/Node3D" unique_id=1683398079]
+transform = Transform3D(0.46129543, -0.14434546, -0.87542593, -0.87542605, -0.2345697, -0.42261824, -0.14434545, 0.9613227, -0.23456967, 0.20000002, 0.08799104, 1)
+mesh = SubResource("PrismMesh_f3tqf")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="ProtoModel/Node3D" unique_id=1709447462]
+transform = Transform3D(-0.51328886, 0.19010535, -0.8368957, -0.85165733, -0.23315768, 0.46937934, -0.1058971, 0.95367587, 0.2815818, -0.19999999, 0.08799104, 1)
+mesh = SubResource("PrismMesh_f3tqf")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="ProtoModel/Node3D" unique_id=2084385275]
+transform = Transform3D(-0.17364824, 0.254887, -0.9512513, 1.13133405e-08, 0.96592593, 0.25881907, 0.9848077, 0.044943456, -0.1677313, 0.2, 0.5, 0.6)
+mesh = SubResource("PrismMesh_18ro0")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="ProtoModel/Node3D" unique_id=1486079496]
+transform = Transform3D(-0.2588191, 0.25000003, -0.9330128, 1.13133405e-08, 0.96592593, 0.25881907, 0.9659258, 0.0669873, -0.25000003, 0.24299641, 0.5, 0.3)
+mesh = SubResource("PrismMesh_18ro0")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="ProtoModel/Node3D" unique_id=262965887]
+transform = Transform3D(-4.222196e-08, 0.25881904, -0.9659258, 1.131334e-08, 0.9659258, 0.25881904, 1, 0, -4.371139e-08, 0.3, 0.5, 0)
+mesh = SubResource("PrismMesh_18ro0")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="ProtoModel/Node3D" unique_id=2095010533]
+transform = Transform3D(0.25881904, 0.25000003, -0.9330128, 1.13133405e-08, 0.96592593, 0.25881907, 0.9659258, -0.0669873, 0.24999996, 0.24299641, 0.5, -0.3)
+mesh = SubResource("PrismMesh_18ro0")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="ProtoModel/Node3D" unique_id=106442920]
+transform = Transform3D(0.17364815, 0.254887, -0.9512513, 1.13133405e-08, 0.96592593, 0.25881907, 0.9848077, -0.044943456, 0.16773121, 0.2, 0.5, -0.6)
+mesh = SubResource("PrismMesh_18ro0")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D11" type="MeshInstance3D" parent="ProtoModel/Node3D" unique_id=1319340802]
+transform = Transform3D(0.0871557, -0.2578342, -0.9622503, -1.13133405e-08, 0.96592593, -0.25881907, 0.9961947, 0.022557564, 0.08418593, -0.2, 0.5, 0.6)
+mesh = SubResource("PrismMesh_18ro0")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D12" type="MeshInstance3D" parent="ProtoModel/Node3D" unique_id=1502095941]
+transform = Transform3D(0.25881904, -0.25000003, -0.9330128, -1.13133405e-08, 0.96592593, -0.25881907, 0.9659258, 0.0669873, 0.24999996, -0.26314598, 0.5, 0.3)
+mesh = SubResource("PrismMesh_18ro0")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D13" type="MeshInstance3D" parent="ProtoModel/Node3D" unique_id=2068444809]
+transform = Transform3D(-4.222196e-08, -0.25881904, -0.9659258, -1.131334e-08, 0.9659258, -0.25881904, 1, 0, -4.371139e-08, -0.3, 0.5, 0)
+mesh = SubResource("PrismMesh_18ro0")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D14" type="MeshInstance3D" parent="ProtoModel/Node3D" unique_id=2047359167]
+transform = Transform3D(-0.2588191, -0.25000003, -0.9330128, -1.13133405e-08, 0.96592593, -0.25881907, 0.9659258, -0.0669873, -0.25000003, -0.26928836, 0.5, -0.3)
+mesh = SubResource("PrismMesh_18ro0")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D15" type="MeshInstance3D" parent="ProtoModel/Node3D" unique_id=556607423]
+transform = Transform3D(-0.2588191, -0.25000003, -0.9330128, -1.13133405e-08, 0.96592593, -0.25881907, 0.9659258, -0.0669873, -0.25000003, -0.2, 0.5, -0.6)
+mesh = SubResource("PrismMesh_18ro0")
+skeleton = NodePath("../..")
+
+[node name="PlayerDetector" type="ShapeCast3D" parent="ProtoModel" unique_id=1594731179]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
+shape = SubResource("CylinderShape3D_bocyf")
+target_position = Vector3(0, 1, 1.5)
+collision_mask = 4
+
+[node name="AreaAttack" parent="ProtoModel" unique_id=688239943 instance=ExtResource("3_citb0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 2)
+
+[node name="Marker3D" type="Marker3D" parent="ProtoModel" unique_id=1744456835]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+
+[node name="HealthComponent" parent="." unique_id=263350021 instance=ExtResource("1_1o7wf")]
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=2100343566]
+avoidance_enabled = true
+debug_enabled = true
+
+[connection signal="defeat" from="HealthComponent" to="." method="_on_health_component_defeat"]
+[connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]

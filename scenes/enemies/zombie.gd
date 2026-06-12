@@ -10,6 +10,7 @@ class_name Zombie
 @onready var navigation_agent_3d: NavigationAgent3D = $NavigationAgent3D
 @onready var proto_model: Node3D = $ProtoModel
 @onready var player_detector: ShapeCast3D = $ProtoModel/PlayerDetector
+@onready var collision_shape_3d: CollisionShape3D = $CollisionShape3D
 
 @onready var player: Player = get_tree().get_first_node_in_group("Player")
 
@@ -36,6 +37,7 @@ func orient_body(target_position: Vector3) -> void:
 	if proto_model.global_position.is_equal_approx(target_position):
 		return
 	proto_model.look_at(target_position, Vector3.UP, true)
+	#collision_shape_3d.look_at(target_position, Vector3.UP, false)
 
 func get_local_navigation_direction() -> Vector3:
 	var destination = navigation_agent_3d.get_next_path_position()

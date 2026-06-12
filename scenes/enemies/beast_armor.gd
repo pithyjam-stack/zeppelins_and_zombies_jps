@@ -1,0 +1,1 @@
+extends Zom_Armor
