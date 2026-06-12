@@ -4,6 +4,8 @@
 [ext_resource type="Material" uid="uid://cx80fg2tdeoi8" path="res://materials/basic_tree_mat.tres" id="2_ck6r4"]
 [ext_resource type="Material" uid="uid://ynp4jvhtdc7m" path="res://materials/basic_cave_mat.tres" id="3_1ase0"]
 [ext_resource type="PackedScene" uid="uid://bgk7e33l0r4ar" path="res://scenes/proto_zeppelin.tscn" id="4_1ase0"]
+[ext_resource type="PackedScene" uid="uid://dme4f6nt4unme" path="res://scenes/Interactable/get_gun_station.tscn" id="4_4o8d7"]
+[ext_resource type="PackedScene" uid="uid://mrpoe6wbljsi" path="res://scenes/weapons/shotgun_weapon.tscn" id="5_cjdrm"]
 [ext_resource type="PackedScene" uid="uid://cdxa2mi8sbv0j" path="res://scenes/player/player.tscn" id="5_hg8mx"]
 [ext_resource type="PackedScene" uid="uid://dlsp6816llt2i" path="res://scenes/weapons/rifle_weapon.tscn" id="6_5j7fi"]
 [ext_resource type="PackedScene" uid="uid://btvnj3yumnqck" path="res://scenes/weapons/death_machine_weapon.tscn" id="7_1vrrl"]
@@ -12,8 +14,6 @@
 [ext_resource type="PackedScene" uid="uid://ccfsg66w7eqvk" path="res://scenes/enemies/zombie.tscn" id="8_jeyjv"]
 [ext_resource type="PackedScene" uid="uid://b6wv1i1ga6cfj" path="res://scenes/enemies/half_zombie.tscn" id="9_jeyjv"]
 [ext_resource type="PackedScene" uid="uid://dud5esie6t4yg" path="res://scenes/enemies/tall_shieldling.tscn" id="10_b02b2"]
-[ext_resource type="PackedScene" uid="uid://dme4f6nt4unme" path="res://scenes/Interactable/get_gun_station.tscn" id="11_p1cwy"]
-[ext_resource type="PackedScene" uid="uid://mrpoe6wbljsi" path="res://scenes/weapons/shotgun_weapon.tscn" id="12_bg77c"]
 [ext_resource type="PackedScene" uid="uid://ce7m6xiof1hb6" path="res://scenes/enemies/beast.tscn" id="11_p1cwy"]
 [ext_resource type="PackedScene" uid="uid://hmip0vth34mb" path="res://scenes/enemies/burrower.tscn" id="12_bg77c"]
 
@@ -90,16 +90,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.582573, 0, 33.985554)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.417427, 0, 33.985554)
 scale_factor = Vector3(1.5, 1.5, 1.5)
 
-[node name="GetGunStation" parent="NavigationRegion3D/Doodads" unique_id=437294562 instance=ExtResource("11_p1cwy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 0, 21)
-weapon = ExtResource("12_bg77c")
+[node name="GetGunStation" parent="NavigationRegion3D/Doodads" unique_id=437294562 instance=ExtResource("4_4o8d7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.3, 0, 26)
+weapon = ExtResource("5_cjdrm")
 
-[node name="GetGunStation2" parent="NavigationRegion3D/Doodads" unique_id=958412987 instance=ExtResource("11_p1cwy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, 13)
+[node name="GetGunStation2" parent="NavigationRegion3D/Doodads" unique_id=1017662980 instance=ExtResource("4_4o8d7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.3, 0, 26)
 weapon = ExtResource("6_5j7fi")
 
-[node name="GetGunStation3" parent="NavigationRegion3D/Doodads" unique_id=1765883236 instance=ExtResource("11_p1cwy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35, 0, 6)
+[node name="GetGunStation3" parent="NavigationRegion3D/Doodads" unique_id=633441013 instance=ExtResource("4_4o8d7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.3, 0, 23.7)
 weapon = ExtResource("7_1vrrl")
 
 [node name="Mountains" type="Node3D" parent="NavigationRegion3D" unique_id=815574173]
@@ -364,9 +364,10 @@ transform = Transform3D(0.25881907, 0, -0.9659258, 0, 1, 0, 0.9659258, 0, 0.2588
 [node name="TallShieldling" parent="Enemies" unique_id=1019572460 instance=ExtResource("10_b02b2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 1.5000005, 28)
 
-[editable path="Player"]
 [node name="CharacterBody3D" parent="Enemies" unique_id=523339716 instance=ExtResource("11_p1cwy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.6, 0.50000024, 6.5)
 
 [node name="Burrower" parent="Enemies" unique_id=77184226 instance=ExtResource("12_bg77c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.50000095, 9.8)
+
+[editable path="Player"]
