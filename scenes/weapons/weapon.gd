@@ -67,12 +67,14 @@ func shoot() -> void:
 		
 		projectile.global_position = muzzle.global_position
 		projectile.global_rotation = global_rotation
+		var firing_direction :Vector3 = -muzzle.global_transform.basis.z
 		
 		var spread_horizontal := deg_to_rad(randf_range(-stats.spread, stats.spread))
 		var spread_vertical := deg_to_rad(randf_range(-stats.spread, stats.spread))
-		projectile.rotate_y(spread_horizontal)
-		projectile.rotate_x(spread_vertical)
-		var firing_direction = -muzzle.global_transform.basis.z  + Vector3(-spread_horizontal,spread_vertical,0)
+		
+		firing_direction = firing_direction.rotated(muzzle.global_basis.y, spread_horizontal)
+		firing_direction = firing_direction.rotated(muzzle.global_basis.x, spread_vertical)
+		
 		firing_direction = firing_direction.normalized()
 		projectile.set_values(firing_direction, stats.damage)
 

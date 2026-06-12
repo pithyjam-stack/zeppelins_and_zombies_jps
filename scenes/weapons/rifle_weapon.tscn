@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://dlsp6816llt2i"]
+
+[ext_resource type="Script" uid="uid://cer8g6xw33f3m" path="res://scenes/weapons/weapon.gd" id="1_bibno"]
+[ext_resource type="Script" uid="uid://bgqahyr6to5nh" path="res://resources/WeaponStats.gd" id="2_6006x"]
+[ext_resource type="PackedScene" uid="uid://cc0win1xceu2h" path="res://scenes/weapons/projectile.tscn" id="2_f7e6w"]
+
+[sub_resource type="Resource" id="Resource_f7e6w"]
+script = ExtResource("2_6006x")
+weapon_name = "Rifle"
+damage = 20
+magazine_capacity = 6
+fire_frequency = 0.6
+projectile_scene = ExtResource("2_f7e6w")
+spread = 3.0
+metadata/_custom_type_script = "uid://bgqahyr6to5nh"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nqevj"]
+albedo_color = Color(0.70316625, 0.5301604, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_eo7p8"]
+material = SubResource("StandardMaterial3D_nqevj")
+size = Vector3(0.175, 0.17, 2.245)
+
+[sub_resource type="BoxMesh" id="BoxMesh_bjmcy"]
+size = Vector3(0.2, 0.2, 0.7)
+
+[node name="Weapon" type="Node3D" unique_id=457058281]
+script = ExtResource("1_bibno")
+stats = SubResource("Resource_f7e6w")
+
+[node name="Model" type="Node3D" parent="." unique_id=268116546]
+
+[node name="Barrel" type="MeshInstance3D" parent="Model" unique_id=1813716118]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.88665885)
+mesh = SubResource("BoxMesh_eo7p8")
+skeleton = NodePath("../..")
+
+[node name="Handle" type="MeshInstance3D" parent="Model" unique_id=1728936958]
+transform = Transform3D(1, 0, 0, 0, 0.3913897, -0.920225, 0, 0.920225, 0.3913897, 0, -0.2168373, 0.26751888)
+mesh = SubResource("BoxMesh_bjmcy")
+skeleton = NodePath("../..")
+
+[node name="Muzzle" type="Node3D" parent="." unique_id=8583767]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.980392)

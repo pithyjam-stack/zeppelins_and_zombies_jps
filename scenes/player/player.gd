@@ -21,6 +21,7 @@ var path_distance: float = 0.0
 var side_offset : float = 0.0
 
 var owned_weapons : Array[Weapon]
+var owned_weapon_names : Array[String]
 var current_weapon_index := 0
 var current_weapon : Weapon
 
@@ -32,6 +33,12 @@ func _ready() -> void:
 	if starting_weapon:
 		add_weapon(starting_weapon)
 		equip_weapon(0)
+
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("equip_next"):
+		equip_weapon_at_index(1, true)
+	if Input.is_action_just_pressed("equip_prev"):
+		equip_weapon_at_index(-1, true)
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -66,10 +73,15 @@ func _physics_process(delta: float) -> void:
 	_rotate_camera_to_path_direction(tangent, delta)
 
 func add_weapon(new_weapon: PackedScene):
-	var new_weapon_inst = starting_weapon.instantiate() as Weapon
+	var new_weapon_inst = new_weapon.instantiate() as Weapon
+	var new_weapon_name = new_weapon_inst.stats.weapon_name
+	if new_weapon_name in owned_weapon_names:
+		return
+	owned_weapon_names.append(new_weapon_name)
 	hand_position.add_child(new_weapon_inst)
 	new_weapon_inst.global_position = hand_position.global_position + Vector3(-0.1, 0, -0.1)
 	owned_weapons.append(new_weapon_inst)
+	print("Now own the weapon: ", new_weapon_name)
 	new_weapon_inst.set_active(false)
 
 func equip_weapon(index: int) -> void:
@@ -83,11 +95,7 @@ func equip_weapon(index: int) -> void:
 	current_weapon = owned_weapons[current_weapon_index]
 	current_weapon.set_active(true)
 
-func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action("equip_next"):
-		equip_weapon_at_index(1, true)
-	if event.is_action("equip_prev"):
-		equip_weapon_at_index(-1, true)
+
 
 func equip_weapon_at_index(index: int, relative: bool = true) -> void:
 	if owned_weapons.is_empty():
