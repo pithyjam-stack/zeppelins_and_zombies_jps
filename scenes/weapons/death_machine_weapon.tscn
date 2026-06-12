@@ -8,7 +8,7 @@
 script = ExtResource("2_l658m")
 weapon_name = "Death Machine"
 weapon_firing_mode = 1
-magazine_capacity = 80
+magazine_capacity = 120
 reload_time = 3.0
 fire_frequency = 0.025
 projectile_scene = ExtResource("2_h7stf")
@@ -37,29 +37,37 @@ stats = SubResource("Resource_h7stf")
 
 [node name="Model" type="Node3D" parent="." unique_id=942584585]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Model" unique_id=204092274]
+[node name="Barrels" type="Node3D" parent="Model" unique_id=2046087379]
+
+[node name="Barrel1" type="MeshInstance3D" parent="Model/Barrels" unique_id=204092274]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, -0.2170664, -1)
 mesh = SubResource("CylinderMesh_0nv2x")
+skeleton = NodePath("../..")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Model" unique_id=594717649]
+[node name="Barrel2" type="MeshInstance3D" parent="Model/Barrels" unique_id=594717649]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.2518754, -0.0461061, -1)
 mesh = SubResource("CylinderMesh_0nv2x")
+skeleton = NodePath("../..")
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="Model" unique_id=1270632005]
+[node name="Barrel3" type="MeshInstance3D" parent="Model/Barrels" unique_id=1270632005]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.2518754, 0.18783188, -1)
 mesh = SubResource("CylinderMesh_0nv2x")
+skeleton = NodePath("../..")
 
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="Model" unique_id=65640654]
+[node name="Barrel4" type="MeshInstance3D" parent="Model/Barrels" unique_id=65640654]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -0.21862042, -0.0461061, -1)
 mesh = SubResource("CylinderMesh_0nv2x")
+skeleton = NodePath("../..")
 
-[node name="MeshInstance3D6" type="MeshInstance3D" parent="Model" unique_id=858611421]
+[node name="Barrel5" type="MeshInstance3D" parent="Model/Barrels" unique_id=858611421]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -0.21862042, 0.18783188, -1)
 mesh = SubResource("CylinderMesh_0nv2x")
+skeleton = NodePath("../..")
 
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="Model" unique_id=2147071825]
+[node name="Barrel6" type="MeshInstance3D" parent="Model/Barrels" unique_id=2147071825]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.017768264, 0.36724293, -1)
 mesh = SubResource("CylinderMesh_0nv2x")
+skeleton = NodePath("../..")
 
 [node name="MeshInstance3D7" type="MeshInstance3D" parent="Model" unique_id=1573012469]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)

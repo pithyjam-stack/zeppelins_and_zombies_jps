@@ -1,46 +1,58 @@
 extends Weapon
 
-@export var warm_up_time := 1.0
+@export var warm_up_rate := 1.0
+@export var warm_up_to_shoot := 1.5
 @export var spread_rate := 4.0
+@export var spread_down_rate := 8.0
 @export var spread_amount_max := 15.0
 
-var warm_up_timer : Timer
-var is_warm := false
-var is_shooting := false
+var warm_up_amount : float
+var warm_up_max := 3.0
+var is_warming := false
+
 var spread_amount : float
+var barrel_spin_rad_rate : float = 0.0
+var is_shooting := false
+
+@onready var barrels: Node3D = $Model/Barrels
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	super._ready()
-	warm_up_timer = Timer.new()
-	add_child(warm_up_timer)
-	warm_up_timer.one_shot = true
-	warm_up_timer.connect("timeout", _on_warm_up_timer_timeout)
 
 func _process(delta: float) -> void:
 	super._process(delta)
 	if Input.is_action_just_released("shoot"):
-		is_warm = false
-		warm_up_timer.stop()
 		is_shooting = false
+		is_warming = false
+	
+	
+	if is_warming:
+		warm_up_amount += warm_up_rate * delta
+	else:
+		warm_up_amount -= warm_up_rate * delta
+	warm_up_amount = clampf(warm_up_amount, 0, warm_up_max)
 	
 	if is_shooting:
 		spread_amount += spread_rate * delta
 	else:
-		spread_amount -= spread_rate * delta
+		spread_amount -= spread_down_rate * delta
+	barrel_spin_rad_rate = lerpf(barrel_spin_rad_rate, warm_up_amount / warm_up_max + spread_amount / spread_amount_max, 0.05)
 	spread_amount = clampf(spread_amount, 0, spread_amount_max)
 	stats.spread = spread_amount
+	
+	if barrel_spin_rad_rate > 0.01:
+		barrels.rotate_z(barrel_spin_rad_rate)
 
 func try_shoot() -> void:
 	if not can_fire:
 		return
 	if is_reloading:
 		return
-	
-	if !is_warm:
-		if warm_up_timer.time_left == 0:
-			warm_up_timer.start(warm_up_time)
+		
+	is_warming = true
+	if warm_up_amount < warm_up_to_shoot:
 		return
 	
 	shoot()
@@ -54,7 +66,3 @@ func try_shoot() -> void:
 func shoot():
 	super.shoot()
 	is_shooting = true
-
-func _on_warm_up_timer_timeout():
-	print("time")
-	is_warm = true
