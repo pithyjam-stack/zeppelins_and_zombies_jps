@@ -3,8 +3,8 @@ class_name Weapon
 
 @export var stats: WeaponStats
 @onready var muzzle: Node3D = $Muzzle
-@onready var fire_rate_timer: Timer = $Fire_Rate_Timer
-@onready var reloading_timer: Timer = $Reloading_Timer
+var fire_rate_timer: Timer
+var reloading_timer: Timer
 
 
 var current_ammo : int
@@ -13,20 +13,32 @@ var is_reloading := false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	fire_rate_timer = Timer.new()
+	add_child(fire_rate_timer)
+	fire_rate_timer.one_shot = true
+	reloading_timer = Timer.new()
+	add_child(reloading_timer)
+	reloading_timer.one_shot = true
+	
 	current_ammo = stats.magazine_capacity
 	fire_rate_timer.wait_time = stats.fire_frequency
 	reloading_timer.wait_time = stats.reload_time
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
-
-func _unhandled_input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("shoot") and stats.weapon_firing_mode ==  stats.FiringMode.SEMI:
 		try_shoot()
 	elif Input.is_action_pressed("shoot") and stats.weapon_firing_mode == stats.FiringMode.AUTO:
 		try_shoot()
+
+func _unhandled_input(event: InputEvent) -> void:
+	pass
+
+func set_active(flag: bool):
+	visible = flag
+	set_process(flag)
 
 func try_shoot() -> void:
 	if not can_fire:
@@ -55,10 +67,16 @@ func shoot() -> void:
 		
 		projectile.global_position = muzzle.global_position
 		projectile.global_rotation = global_rotation
+		var firing_direction :Vector3 = -muzzle.global_transform.basis.z
 		
-		var spread := randf_range(-stats.spread, stats.spread)
-		projectile.rotate_y(deg_to_rad(spread))
-		projectile.set_values(-muzzle.global_transform.basis.z, stats.damage)
+		var spread_horizontal := deg_to_rad(randf_range(-stats.spread, stats.spread))
+		var spread_vertical := deg_to_rad(randf_range(-stats.spread, stats.spread))
+		
+		firing_direction = firing_direction.rotated(muzzle.global_basis.y, spread_horizontal)
+		firing_direction = firing_direction.rotated(muzzle.global_basis.x, spread_vertical)
+		
+		firing_direction = firing_direction.normalized()
+		projectile.set_values(firing_direction, stats.damage)
 
 func reload() -> void:
 	print("Reloading...")

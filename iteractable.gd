@@ -1,6 +1,5 @@
 extends Node3D
 
-@export var message := "Use Desc"
 @export var collision_radius := 2.0
 
 var nearby_player : Node3D = null

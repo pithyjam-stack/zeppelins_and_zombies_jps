@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://btvnj3yumnqck"]
+
+[ext_resource type="Script" uid="uid://dhmwyhaky2mp8" path="res://scenes/weapons/death_machine_weapon.gd" id="1_5xt4j"]
+[ext_resource type="PackedScene" uid="uid://cc0win1xceu2h" path="res://scenes/weapons/projectile.tscn" id="2_h7stf"]
+[ext_resource type="Script" uid="uid://bgqahyr6to5nh" path="res://resources/WeaponStats.gd" id="2_l658m"]
+
+[sub_resource type="Resource" id="Resource_h7stf"]
+script = ExtResource("2_l658m")
+weapon_name = "Death Machine"
+weapon_firing_mode = 1
+magazine_capacity = 80
+reload_time = 3.0
+fire_frequency = 0.025
+projectile_scene = ExtResource("2_h7stf")
+metadata/_custom_type_script = "uid://bgqahyr6to5nh"
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_0nv2x"]
+top_radius = 0.1
+bottom_radius = 0.1
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_5xt4j"]
+height = 0.5
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_l658m"]
+top_radius = 0.3
+bottom_radius = 0.3
+height = 1.5
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_h7stf"]
+top_radius = 0.15
+bottom_radius = 0.2
+height = 0.6
+
+[node name="DeathMachine_weapon" type="Node3D" unique_id=62633649]
+script = ExtResource("1_5xt4j")
+stats = SubResource("Resource_h7stf")
+
+[node name="Model" type="Node3D" parent="." unique_id=942584585]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Model" unique_id=204092274]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, -0.2170664, -1)
+mesh = SubResource("CylinderMesh_0nv2x")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Model" unique_id=594717649]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.2518754, -0.0461061, -1)
+mesh = SubResource("CylinderMesh_0nv2x")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Model" unique_id=1270632005]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.2518754, 0.18783188, -1)
+mesh = SubResource("CylinderMesh_0nv2x")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Model" unique_id=65640654]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -0.21862042, -0.0461061, -1)
+mesh = SubResource("CylinderMesh_0nv2x")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Model" unique_id=858611421]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -0.21862042, 0.18783188, -1)
+mesh = SubResource("CylinderMesh_0nv2x")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Model" unique_id=2147071825]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.017768264, 0.36724293, -1)
+mesh = SubResource("CylinderMesh_0nv2x")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="Model" unique_id=1573012469]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_5xt4j")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="Model" unique_id=2073310719]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0.9031602)
+mesh = SubResource("CylinderMesh_l658m")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="Model" unique_id=154020191]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5770711, 1.4504983)
+mesh = SubResource("CylinderMesh_h7stf")
+
+[node name="Muzzle" type="Node3D" parent="." unique_id=2146064184]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.030944)

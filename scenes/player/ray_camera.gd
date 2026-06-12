@@ -21,9 +21,15 @@ func _process(delta: float) -> void:
 	
 	var collider := ray_cast_3d.get_collider()
 	if ray_cast_3d.is_colliding():
-		if !collider.is_in_group("Player"):
-			#shape.global_position = ray_cast_3d.get_collision_point()
-			var direction : Vector3 = ray_cast_3d.get_collision_point() - player.global_position
+		if collider.is_in_group("Player"):
+			return
+			
+		elif collider.is_in_group("Floor"):
+			var direction : Vector3 = ray_cast_3d.get_collision_point() - player.hand_position.global_position
 			player._rotate_to_direction(direction, delta)
 			player._aim_weapon_at_position(direction, delta)
-	
+		
+		elif collider is Zombie or Zom_Armor:
+			var direction : Vector3 = collider.global_position - player.hand_position.global_position
+			player._rotate_to_direction(direction, delta)
+			player._aim_weapon_at_position(direction, delta)

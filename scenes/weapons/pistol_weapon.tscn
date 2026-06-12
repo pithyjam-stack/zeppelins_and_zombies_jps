@@ -1,6 +1,17 @@
-[gd_scene format=3 uid="uid://3ibmediqf6lp"]
+[gd_scene format=3 uid="uid://b6e67utmikg8o"]
 
-[ext_resource type="Script" uid="uid://cer8g6xw33f3m" path="res://scenes/weapons/weapon.gd" id="1_nqevj"]
+[ext_resource type="Script" uid="uid://cer8g6xw33f3m" path="res://scenes/weapons/weapon.gd" id="1_t6hi4"]
+[ext_resource type="PackedScene" uid="uid://cc0win1xceu2h" path="res://scenes/weapons/projectile.tscn" id="2_j17aw"]
+[ext_resource type="Script" uid="uid://bgqahyr6to5nh" path="res://resources/WeaponStats.gd" id="3_jruw1"]
+
+[sub_resource type="Resource" id="Resource_1qn6a"]
+script = ExtResource("3_jruw1")
+weapon_name = "Pistol"
+damage = 4
+magazine_capacity = 18
+reload_time = 1.2
+projectile_scene = ExtResource("2_j17aw")
+metadata/_custom_type_script = "uid://bgqahyr6to5nh"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nqevj"]
 albedo_color = Color(1, 0.20392157, 0.17254902, 1)
@@ -13,7 +24,8 @@ size = Vector3(0.2, 0.2, 0.7)
 size = Vector3(0.2, 0.2, 0.7)
 
 [node name="Weapon" type="Node3D" unique_id=457058281]
-script = ExtResource("1_nqevj")
+script = ExtResource("1_t6hi4")
+stats = SubResource("Resource_1qn6a")
 
 [node name="Model" type="Node3D" parent="." unique_id=268116546]
 

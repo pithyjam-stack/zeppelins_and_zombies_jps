@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://mrpoe6wbljsi"]
+
+[ext_resource type="Script" uid="uid://cer8g6xw33f3m" path="res://scenes/weapons/weapon.gd" id="1_e7m78"]
+[ext_resource type="PackedScene" uid="uid://cc0win1xceu2h" path="res://scenes/weapons/projectile.tscn" id="2_eprvi"]
+[ext_resource type="Script" uid="uid://bgqahyr6to5nh" path="res://resources/WeaponStats.gd" id="3_2gsed"]
+
+[sub_resource type="Resource" id="Resource_tj5t4"]
+script = ExtResource("3_2gsed")
+weapon_name = "Shotgun"
+damage = 2
+magazine_capacity = 4
+fire_frequency = 0.5
+projectile_scene = ExtResource("2_eprvi")
+projectile_count = 8
+spread = 10.0
+metadata/_custom_type_script = "uid://bgqahyr6to5nh"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nqevj"]
+albedo_color = Color(0.84340036, 0.43252975, 9.62615e-07, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_eo7p8"]
+material = SubResource("StandardMaterial3D_nqevj")
+size = Vector3(0.555, 0.345, 0.7)
+
+[sub_resource type="BoxMesh" id="BoxMesh_bjmcy"]
+size = Vector3(0.2, 0.31, 0.7)
+
+[node name="ShotgunWeapon" type="Node3D" unique_id=457058281]
+script = ExtResource("1_e7m78")
+stats = SubResource("Resource_tj5t4")
+
+[node name="Model" type="Node3D" parent="." unique_id=268116546]
+
+[node name="Barrel" type="MeshInstance3D" parent="Model" unique_id=1813716118]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.18208604)
+mesh = SubResource("BoxMesh_eo7p8")
+skeleton = NodePath("../..")
+
+[node name="Handle" type="MeshInstance3D" parent="Model" unique_id=1728936958]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, -0.2168373, 0.26751888)
+mesh = SubResource("BoxMesh_bjmcy")
+skeleton = NodePath("../..")
+
+[node name="Muzzle" type="Node3D" parent="." unique_id=8583767]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.54848313)
