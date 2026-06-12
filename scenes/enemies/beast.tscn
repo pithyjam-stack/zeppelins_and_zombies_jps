@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dgqo3lt6tn58d" path="res://scenes/player/health_component.tscn" id="1_1o7wf"]
 [ext_resource type="Script" uid="uid://djsialuns27v8" path="res://scenes/enemies/beast.gd" id="1_mi8ht"]
 [ext_resource type="Material" uid="uid://corwsmjeloxqj" path="res://materials/beast_mat.tres" id="2_kby84"]
+[ext_resource type="PackedScene" uid="uid://bpr4s8wrxgtox" path="res://scenes/enemies/beast_armor.tscn" id="2_n13rj"]
 [ext_resource type="PackedScene" uid="uid://cu3n4m4et8t3q" path="res://scenes/enemies/area_attack.tscn" id="3_citb0"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mi8ht"]
@@ -57,11 +58,13 @@ radius = 0.75
 
 [node name="Beast" type="CharacterBody3D" unique_id=523339716 groups=["Enemy"]]
 script = ExtResource("1_mi8ht")
+zom_armor = ExtResource("2_n13rj")
 damage = 5
 speed = 10.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1484143956]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+top_level = true
 shape = SubResource("CapsuleShape3D_mi8ht")
 
 [node name="ProtoModel" type="Node3D" parent="." unique_id=243465890]
@@ -252,10 +255,14 @@ collision_mask = 4
 [node name="AreaAttack" parent="ProtoModel" unique_id=688239943 instance=ExtResource("3_citb0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 2)
 
+[node name="Marker3D" type="Marker3D" parent="ProtoModel" unique_id=1744456835]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+
 [node name="HealthComponent" parent="." unique_id=263350021 instance=ExtResource("1_1o7wf")]
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=2100343566]
 avoidance_enabled = true
+debug_enabled = true
 
 [connection signal="defeat" from="HealthComponent" to="." method="_on_health_component_defeat"]
 [connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]

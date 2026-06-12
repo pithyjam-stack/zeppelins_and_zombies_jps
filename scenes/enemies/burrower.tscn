@@ -1,0 +1,123 @@
+[gd_scene format=3 uid="uid://hmip0vth34mb"]
+
+[ext_resource type="Script" uid="uid://0ray06vjnh8e" path="res://scenes/enemies/burrower.gd" id="1_18hvp"]
+[ext_resource type="PackedScene" uid="uid://cu3n4m4et8t3q" path="res://scenes/enemies/area_attack.tscn" id="2_rw1on"]
+[ext_resource type="PackedScene" uid="uid://dgqo3lt6tn58d" path="res://scenes/player/health_component.tscn" id="3_m6cvi"]
+[ext_resource type="Material" uid="uid://d3e3pxbr5lc3o" path="res://materials/burrower_mat.tres" id="3_xl6aw"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hi24f"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_xl6aw"]
+height = 3.0
+radius = 0.75
+
+[sub_resource type="SphereMesh" id="SphereMesh_446s7"]
+material = ExtResource("3_xl6aw")
+radius = 0.3
+height = 0.6
+radial_segments = 16
+rings = 8
+
+[sub_resource type="SphereMesh" id="SphereMesh_np6ou"]
+material = ExtResource("3_xl6aw")
+radius = 0.4
+height = 0.7
+radial_segments = 16
+rings = 8
+
+[sub_resource type="SphereMesh" id="SphereMesh_e28bt"]
+material = ExtResource("3_xl6aw")
+radius = 0.3
+height = 0.5
+radial_segments = 16
+rings = 8
+
+[sub_resource type="SphereMesh" id="SphereMesh_2ytay"]
+material = ExtResource("3_xl6aw")
+radius = 0.2
+height = 0.4
+radial_segments = 16
+rings = 8
+
+[sub_resource type="SphereMesh" id="SphereMesh_fj5u7"]
+material = ExtResource("3_xl6aw")
+radius = 0.4
+height = 0.8
+radial_segments = 16
+rings = 8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2aeme"]
+albedo_color = Color(0.8235294, 0, 0, 1)
+emission_enabled = true
+emission = Color(1, 0.00999999, 0.00999999, 1)
+emission_energy_multiplier = 10.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_6egpa"]
+material = SubResource("StandardMaterial3D_2aeme")
+radius = 0.05
+height = 0.1
+
+[node name="Burrower" type="CharacterBody3D" unique_id=77184226]
+script = ExtResource("1_18hvp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1655149349]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_hi24f")
+
+[node name="ProtoModel" type="Node3D" parent="." unique_id=2059568409]
+
+[node name="PlayerDetector" type="ShapeCast3D" parent="ProtoModel" unique_id=1673876659]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
+shape = SubResource("CylinderShape3D_xl6aw")
+target_position = Vector3(0, 1, 1.5)
+collision_mask = 4
+
+[node name="AreaAttack" parent="ProtoModel" unique_id=688239943 instance=ExtResource("2_rw1on")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 2)
+
+[node name="SubModel" type="Node3D" parent="ProtoModel" unique_id=256311966]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ProtoModel/SubModel" unique_id=681900532]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0.7)
+mesh = SubResource("SphereMesh_446s7")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="ProtoModel/SubModel" unique_id=1151244597]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.14596482, 0.099999994)
+mesh = SubResource("SphereMesh_np6ou")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="ProtoModel/SubModel" unique_id=600030339]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25403517, -0.3)
+mesh = SubResource("SphereMesh_e28bt")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="ProtoModel/SubModel" unique_id=1097714696]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3052264, -0.6)
+mesh = SubResource("SphereMesh_2ytay")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="ProtoModel/SubModel" unique_id=587155281]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1004615, 0.4)
+mesh = SubResource("SphereMesh_fj5u7")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="ProtoModel/SubModel" unique_id=507938221]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 0, 0.90000004)
+mesh = SubResource("SphereMesh_6egpa")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="ProtoModel/SubModel" unique_id=31959578]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0, 0.90000004)
+mesh = SubResource("SphereMesh_6egpa")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="ProtoModel/SubModel" unique_id=1797331216]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1267434, 0.04972709, 0.8)
+mesh = SubResource("SphereMesh_6egpa")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="ProtoModel/SubModel" unique_id=1123094231]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15311065, 0.050938554, 0.8)
+mesh = SubResource("SphereMesh_6egpa")
+
+[node name="HealthComponent" parent="." unique_id=263350021 instance=ExtResource("3_m6cvi")]
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1141378553]
+avoidance_enabled = true
+debug_enabled = true
+
+[connection signal="defeat" from="HealthComponent" to="." method="_on_health_component_defeat"]
+[connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]
