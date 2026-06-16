@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://daw1x3xkvnmgj"]
+
+[ext_resource type="Script" uid="uid://ckhwnyqwtqvwn" path="res://scenes/weapons/weapon_status/status_effect_slow.gd" id="1_i3dxf"]
+
+[node name="StatusEffectSlow" type="Node" unique_id=994109160]
+script = ExtResource("1_i3dxf")

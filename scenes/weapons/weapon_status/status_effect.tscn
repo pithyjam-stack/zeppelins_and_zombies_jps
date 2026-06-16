@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dv4sxddfkhunj"]
+
+[ext_resource type="Script" uid="uid://cfedj3swiw1a6" path="res://scenes/weapons/weapon_status/status_effect.gd" id="1_qdvxv"]
+
+[node name="StatusEffect" type="Node" unique_id=175767423]
+script = ExtResource("1_qdvxv")

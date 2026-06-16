@@ -1,4 +1,5 @@
 extends Area3D
+class_name Projectile
 
 @export var speed := 10.0
 @export var damage := 3.0
