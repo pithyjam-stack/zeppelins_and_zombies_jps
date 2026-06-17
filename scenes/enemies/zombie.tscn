@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://djxskcqyo0k8g" path="res://scenes/enemies/zombie.gd" id="1_gl10n"]
 [ext_resource type="PackedScene" uid="uid://cu3n4m4et8t3q" path="res://scenes/enemies/area_attack.tscn" id="2_a0lpg"]
+[ext_resource type="PackedScene" uid="uid://b6l543pf0forr" path="res://assets/z&z_proto_zombie.glb" id="2_bgxja"]
 [ext_resource type="PackedScene" uid="uid://dgqo3lt6tn58d" path="res://scenes/player/health_component.tscn" id="2_rdvt3"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6xk8f"]
@@ -45,37 +46,44 @@ shape = SubResource("CapsuleShape3D_6xk8f")
 [node name="ProtoModel" type="Node3D" parent="." unique_id=1030611067]
 
 [node name="Body" type="MeshInstance3D" parent="ProtoModel" unique_id=1742828398]
+visible = false
 mesh = SubResource("CapsuleMesh_6xk8f")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_8e3ao")
 
 [node name="Eyeball1" type="MeshInstance3D" parent="ProtoModel" unique_id=53132455]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0.6, 0.4)
+visible = false
 mesh = SubResource("SphereMesh_38ino")
 surface_material_override/0 = SubResource("StandardMaterial3D_fcftc")
 
 [node name="Eyeball3" type="MeshInstance3D" parent="ProtoModel" unique_id=1730528106]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 0.70000005, 0.5)
+visible = false
 mesh = SubResource("SphereMesh_lu5c6")
 surface_material_override/0 = SubResource("StandardMaterial3D_nb6gf")
 
 [node name="Eyeball4" type="MeshInstance3D" parent="ProtoModel" unique_id=1754274662]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 0.70000005, 0.5)
+visible = false
 mesh = SubResource("SphereMesh_lu5c6")
 surface_material_override/0 = SubResource("StandardMaterial3D_nb6gf")
 
 [node name="Eyeball2" type="MeshInstance3D" parent="ProtoModel" unique_id=1395965237]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.29999998, 0.6, 0.4)
+visible = false
 mesh = SubResource("SphereMesh_38ino")
 surface_material_override/0 = SubResource("StandardMaterial3D_fcftc")
 
 [node name="Mouth1" type="MeshInstance3D" parent="ProtoModel" unique_id=854099147]
 transform = Transform3D(1, 0, 0, 0, 0.9396926, 0.34202012, 0, -0.34202012, 0.9396926, 0, 0.3, 0.4)
+visible = false
 mesh = SubResource("CylinderMesh_jt03m")
 surface_material_override/0 = SubResource("StandardMaterial3D_n7575")
 
 [node name="Mouth2" type="MeshInstance3D" parent="ProtoModel" unique_id=1039053479]
 transform = Transform3D(1, 0, 0, 0, 0.96592593, -0.25881907, 0, 0.25881907, 0.96592593, 0, 0.20000002, 0.4)
+visible = false
 mesh = SubResource("CylinderMesh_jt03m")
 surface_material_override/0 = SubResource("StandardMaterial3D_n7575")
 
@@ -87,6 +95,53 @@ collision_mask = 4
 [node name="AreaAttack" parent="ProtoModel" unique_id=688239943 instance=ExtResource("2_a0lpg")]
 target_position = Vector3(0, 0, 1)
 
+[node name="z&z_proto_zombie" parent="ProtoModel" unique_id=1046996736 instance=ExtResource("2_bgxja")]
+transform = Transform3D(0.581, 0, 0, 0, 0.581, 0, 0, 0, 0.581, 0, -1, -0.2)
+
+[node name="Skeleton3D" parent="ProtoModel/z&z_proto_zombie/metarig" parent_id_path=PackedInt32Array(1046996736, 1656135155) index="0" unique_id=1741282129]
+bones/0/position = Vector3(-0.013044355, 1.8436319, 0.003217049)
+bones/0/rotation = Quaternion(0.015001195, 0.1324949, -0.002005498, 0.9910682)
+bones/1/rotation = Quaternion(0.07628768, 1.1798631e-07, 8.875569e-09, 0.99708587)
+bones/2/rotation = Quaternion(0.076814294, -0.007701196, -0.029973766, 0.99656504)
+bones/3/rotation = Quaternion(0.22237067, -0.20173232, 0.12393704, 0.9457775)
+bones/4/rotation = Quaternion(0.20871474, 0.056643035, -0.08692133, 0.9724579)
+bones/5/rotation = Quaternion(-0.15761538, 1.229342e-07, 5.7438307e-08, 0.9875006)
+bones/6/rotation = Quaternion(-0.318517, -2.1378315e-07, -1.01309794e-07, 0.94791716)
+bones/7/position = Vector3(0.12984158, 0.2783744, 0.19850203)
+bones/7/rotation = Quaternion(-0.34837273, -0.7297204, -0.48985413, 0.3258643)
+bones/8/rotation = Quaternion(-0.22484404, 0.3072907, -0.2861238, 0.8792899)
+bones/9/rotation = Quaternion(0.4266658, 0.13585508, -0.16889758, 0.87805086)
+bones/11/position = Vector3(-0.12984166, 0.27837446, 0.19850214)
+bones/11/rotation = Quaternion(-0.5743682, 0.4750443, 0.39174443, 0.53941685)
+bones/12/rotation = Quaternion(0.3434989, -0.14874345, 0.4371492, 0.8177924)
+bones/13/rotation = Quaternion(0.29288557, -0.1451201, 0.11594006, 0.9379319)
+bones/15/rotation = Quaternion(-3.1925637e-08, 0.75452316, 0.6562735, -3.3866968e-08)
+bones/16/rotation = Quaternion(-3.1925637e-08, 0.75452316, 0.6562735, -3.3866968e-08)
+bones/17/rotation = Quaternion(-0.13120475, -0.7442226, -0.41631716, 0.50556713)
+bones/18/rotation = Quaternion(-0.031939525, 0.7314514, 0.40958625, 0.54424065)
+bones/19/rotation = Quaternion(0.98630244, 0.09946289, -0.029521225, -0.1282306)
+bones/19/scale = Vector3(1.0000006, 0.99999714, 1.0000576)
+bones/20/rotation = Quaternion(0.13148679, -0.00035542343, -0.0062191742, 0.9912984)
+bones/21/rotation = Quaternion(-0.5080514, 0.029160189, 0.06615019, 0.8582876)
+bones/22/rotation = Quaternion(0.020846983, 0.90828514, -0.41669983, 0.030736143)
+bones/24/rotation = Quaternion(0.8911377, -0.0826125, 0.32515725, 0.3054858)
+bones/24/scale = Vector3(0.9999931, 0.9999985, 1.0000653)
+bones/25/rotation = Quaternion(0.19776982, 0.00035144138, 0.009354228, 0.98020387)
+bones/26/rotation = Quaternion(-0.498215, 0.0012850482, -0.06807807, 0.8643758)
+bones/27/rotation = Quaternion(-0.030527273, 0.9557893, -0.29235297, 0.008042762)
+bones/29/position = Vector3(0.3841648, 1.8696821, 1.5490261)
+bones/30/position = Vector3(-1.0907274, 2.7762446, 1.2707397)
+bones/31/position = Vector3(1.0066836, 2.487061, -0.51805335)
+bones/32/position = Vector3(-1.0066836, 2.487061, -0.4180533)
+bones/33/position = Vector3(0.35530758, 0.30083397, -0.7327999)
+bones/34/position = Vector3(-0.45314023, 0.2877896, 0.8847001)
+bones/35/position = Vector3(1.0080523, 1.0589408, 2.0145278)
+bones/35/rotation = Quaternion(-0.14305419, 0.70304364, 0.68937224, -0.10015505)
+bones/36/position = Vector3(-0.9792491, 1.065463, 2.0080059)
+
+[node name="AnimationPlayer" parent="ProtoModel/z&z_proto_zombie" index="1" unique_id=2134907684]
+autoplay = &"Walk"
+
 [node name="HealthComponent" parent="." unique_id=263350021 instance=ExtResource("2_rdvt3")]
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1691835354]
@@ -95,3 +150,5 @@ debug_enabled = true
 
 [connection signal="defeat" from="HealthComponent" to="." method="_on_health_component_defeat"]
 [connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]
+
+[editable path="ProtoModel/z&z_proto_zombie"]
