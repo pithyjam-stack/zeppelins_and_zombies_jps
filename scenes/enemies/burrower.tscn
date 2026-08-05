@@ -113,6 +113,10 @@ mesh = SubResource("SphereMesh_6egpa")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15311065, 0.050938554, 0.8)
 mesh = SubResource("SphereMesh_6egpa")
 
+[node name="z&z_proto_zombie" type="Node3D" parent="ProtoModel" unique_id=711616291]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ProtoModel/z&z_proto_zombie" unique_id=94146417]
+
 [node name="HealthComponent" parent="." unique_id=263350021 instance=ExtResource("3_m6cvi")]
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1141378553]

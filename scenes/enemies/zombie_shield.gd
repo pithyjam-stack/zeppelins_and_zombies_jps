@@ -18,6 +18,7 @@ func _physics_process(delta: float) -> void:
 
 # Placeholder for when player shoots shield
 func _on_area_entered(area: Area3D) -> void:
-	health_component.take_damage(2)
-	print("taking damage!")
+	if area is not Zom_Ball:
+		health_component.take_damage(2)
+		print("taking damage!")
 	

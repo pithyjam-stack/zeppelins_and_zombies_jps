@@ -1,5 +1,7 @@
 extends Area3D
 
+class_name Zom_Ball
+
 var direction := Vector3.FORWARD
 
 @export var speed := 30.0

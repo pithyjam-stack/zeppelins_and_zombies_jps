@@ -255,6 +255,10 @@ collision_mask = 4
 [node name="AreaAttack" parent="ProtoModel" unique_id=688239943 instance=ExtResource("3_citb0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 2)
 
+[node name="z&z_proto_zombie" type="Node3D" parent="ProtoModel" unique_id=1015233219]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ProtoModel/z&z_proto_zombie" unique_id=1622628746]
+
 [node name="Marker3D" type="Marker3D" parent="ProtoModel" unique_id=1744456835]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
 
