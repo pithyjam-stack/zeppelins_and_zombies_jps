@@ -1,0 +1,421 @@
+[gd_scene format=3 uid="uid://8i8agarb45j3"]
+
+[ext_resource type="PackedScene" uid="uid://dgqo3lt6tn58d" path="res://scenes/player/health_component.tscn" id="1_7aw2c"]
+[ext_resource type="Script" uid="uid://deh7j267k6rsf" path="res://scenes/enemies/bulging_nester.gd" id="1_wu0og"]
+[ext_resource type="PackedScene" uid="uid://hmip0vth34mb" path="res://scenes/enemies/burrower.tscn" id="2_5q6es"]
+[ext_resource type="PackedScene" uid="uid://cu3n4m4et8t3q" path="res://scenes/enemies/area_attack.tscn" id="2_p6xld"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7aw2c"]
+radius = 1.25
+height = 3.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_wu0og"]
+radius = 0.3
+height = 0.6
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p6xld"]
+albedo_color = Color(0.61, 0.09760002, 0.09760002, 1)
+roughness = 0.3
+
+[sub_resource type="SphereMesh" id="SphereMesh_5q6es"]
+height = 0.8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k1yxe"]
+albedo_color = Color(1, 0.36, 0.36, 1)
+roughness = 0.3
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_opsu1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k7cp3"]
+albedo_color = Color(0.92856026, 0.35802895, 0.34955952, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_3eayw"]
+radius = 0.2
+height = 0.4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ce6o5"]
+albedo_color = Color(0.342, 0.36480004, 0.57, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_ki4c1"]
+radius = 0.1
+height = 0.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g5bgo"]
+albedo_color = Color(2.9769359, 1.9082975, 1.033957, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ny6d5"]
+top_radius = 0.2
+bottom_radius = 0.2
+height = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gqtcr"]
+albedo_color = Color(0.4732359, 0, 0.04630114, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_ufbqx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bjo1m"]
+albedo_color = Color(0.72, 0.28103998, 0.2736, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_r1s8j"]
+radius = 0.25
+height = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pk8c6"]
+albedo_color = Color(0.92856026, 0.35802895, 0.34955952, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_uwek1"]
+top_radius = 0.1
+bottom_radius = 0.1
+height = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r3bhm"]
+albedo_color = Color(0.92856026, 0.35802895, 0.34955952, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_oe11a"]
+top_radius = 0.1
+bottom_radius = 0.1
+height = 0.6
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vrtyn"]
+albedo_color = Color(0.92856026, 0.35802895, 0.34955952, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vp8p8"]
+albedo_color = Color(0.92856026, 0.35802895, 0.34955952, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v065e"]
+albedo_color = Color(0.92856026, 0.35802895, 0.34955952, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_40iib"]
+albedo_color = Color(0.92856026, 0.35802895, 0.34955952, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0s856"]
+albedo_color = Color(0.92856026, 0.35802895, 0.34955952, 1)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5q6es"]
+
+[node name="BulgingNester" type="CharacterBody3D" unique_id=1368245131]
+script = ExtResource("1_wu0og")
+burrower = ExtResource("2_5q6es")
+damage = 0
+speed = 2.5
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=864934999]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.39999998, 0)
+shape = SubResource("CapsuleShape3D_7aw2c")
+
+[node name="ProtoModel" type="Node3D" parent="." unique_id=691992193]
+
+[node name="Gyne" type="MeshInstance3D" parent="ProtoModel" unique_id=1060674075]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+mesh = SubResource("SphereMesh_wu0og")
+surface_material_override/0 = SubResource("StandardMaterial3D_p6xld")
+
+[node name="Gyne2" type="MeshInstance3D" parent="ProtoModel/Gyne" unique_id=1785826433]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
+mesh = SubResource("SphereMesh_5q6es")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_k1yxe")
+
+[node name="Body1" type="MeshInstance3D" parent="ProtoModel" unique_id=275811684]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0.4)
+mesh = SubResource("CapsuleMesh_opsu1")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_k7cp3")
+
+[node name="Eyeball1" type="MeshInstance3D" parent="ProtoModel/Body1" unique_id=830722031]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0.6, 0.4)
+mesh = SubResource("SphereMesh_3eayw")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_ce6o5")
+
+[node name="Eyeball3" type="MeshInstance3D" parent="ProtoModel/Body1" unique_id=348023060]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 0.70000005, 0.5)
+mesh = SubResource("SphereMesh_ki4c1")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_g5bgo")
+
+[node name="Eyeball4" type="MeshInstance3D" parent="ProtoModel/Body1" unique_id=1899222799]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 0.70000005, 0.5)
+mesh = SubResource("SphereMesh_ki4c1")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_g5bgo")
+
+[node name="Eyeball2" type="MeshInstance3D" parent="ProtoModel/Body1" unique_id=260329953]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.29999998, 0.6, 0.4)
+mesh = SubResource("SphereMesh_3eayw")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_ce6o5")
+
+[node name="Mouth1" type="MeshInstance3D" parent="ProtoModel/Body1" unique_id=131015003]
+transform = Transform3D(1, 0, 0, 0, 0.9396926, 0.34202012, 0, -0.34202012, 0.9396926, 0, 0.3, 0.4)
+mesh = SubResource("CylinderMesh_ny6d5")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_gqtcr")
+
+[node name="Mouth2" type="MeshInstance3D" parent="ProtoModel/Body1" unique_id=1616752664]
+transform = Transform3D(1, 0, 0, 0, 0.96592593, -0.25881907, 0, 0.25881907, 0.96592593, 0, 0.20000002, 0.4)
+mesh = SubResource("CylinderMesh_ny6d5")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_gqtcr")
+
+[node name="Chamber" type="MeshInstance3D" parent="ProtoModel/Body1" unique_id=476396452]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, 0.4)
+mesh = SubResource("SphereMesh_ufbqx")
+surface_material_override/0 = SubResource("StandardMaterial3D_bjo1m")
+
+[node name="Body2" type="MeshInstance3D" parent="ProtoModel" unique_id=154153698]
+transform = Transform3D(-0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, -0.70710677, -0.4, 0.75, -0.4)
+mesh = SubResource("CapsuleMesh_opsu1")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_k7cp3")
+
+[node name="Eyeball1" type="MeshInstance3D" parent="ProtoModel/Body2" unique_id=443787649]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0.6, 0.4)
+mesh = SubResource("SphereMesh_3eayw")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_ce6o5")
+
+[node name="Eyeball3" type="MeshInstance3D" parent="ProtoModel/Body2" unique_id=1745563716]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 0.70000005, 0.5)
+mesh = SubResource("SphereMesh_ki4c1")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_g5bgo")
+
+[node name="Eyeball4" type="MeshInstance3D" parent="ProtoModel/Body2" unique_id=1834612408]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 0.70000005, 0.5)
+mesh = SubResource("SphereMesh_ki4c1")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_g5bgo")
+
+[node name="Eyeball2" type="MeshInstance3D" parent="ProtoModel/Body2" unique_id=602668313]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.29999998, 0.6, 0.4)
+mesh = SubResource("SphereMesh_3eayw")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_ce6o5")
+
+[node name="Mouth1" type="MeshInstance3D" parent="ProtoModel/Body2" unique_id=1317517592]
+transform = Transform3D(1, 0, 0, 0, 0.9396926, 0.34202012, 0, -0.34202012, 0.9396926, 0, 0.3, 0.4)
+mesh = SubResource("CylinderMesh_ny6d5")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_gqtcr")
+
+[node name="Mouth2" type="MeshInstance3D" parent="ProtoModel/Body2" unique_id=341401207]
+transform = Transform3D(1, 0, 0, 0, 0.96592593, -0.25881907, 0, 0.25881907, 0.96592593, 0, 0.20000002, 0.4)
+mesh = SubResource("CylinderMesh_ny6d5")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_gqtcr")
+
+[node name="Chamber" type="MeshInstance3D" parent="ProtoModel/Body2" unique_id=791577611]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, 0.4)
+mesh = SubResource("SphereMesh_ufbqx")
+surface_material_override/0 = SubResource("StandardMaterial3D_bjo1m")
+
+[node name="Body3" type="MeshInstance3D" parent="ProtoModel" unique_id=1852423329]
+transform = Transform3D(-0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, -0.70710677, 0.4, 0.75, -0.4)
+mesh = SubResource("CapsuleMesh_opsu1")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_k7cp3")
+
+[node name="Eyeball1" type="MeshInstance3D" parent="ProtoModel/Body3" unique_id=1394015038]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0.6, 0.4)
+mesh = SubResource("SphereMesh_3eayw")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_ce6o5")
+
+[node name="Eyeball3" type="MeshInstance3D" parent="ProtoModel/Body3" unique_id=1741169487]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 0.70000005, 0.5)
+mesh = SubResource("SphereMesh_ki4c1")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_g5bgo")
+
+[node name="Eyeball4" type="MeshInstance3D" parent="ProtoModel/Body3" unique_id=1973532154]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 0.70000005, 0.5)
+mesh = SubResource("SphereMesh_ki4c1")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_g5bgo")
+
+[node name="Eyeball2" type="MeshInstance3D" parent="ProtoModel/Body3" unique_id=1845600605]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.29999998, 0.6, 0.4)
+mesh = SubResource("SphereMesh_3eayw")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_ce6o5")
+
+[node name="Mouth1" type="MeshInstance3D" parent="ProtoModel/Body3" unique_id=1937136225]
+transform = Transform3D(1, 0, 0, 0, 0.9396926, 0.34202012, 0, -0.34202012, 0.9396926, 0, 0.3, 0.4)
+mesh = SubResource("CylinderMesh_ny6d5")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_gqtcr")
+
+[node name="Mouth2" type="MeshInstance3D" parent="ProtoModel/Body3" unique_id=217946708]
+transform = Transform3D(1, 0, 0, 0, 0.96592593, -0.25881907, 0, 0.25881907, 0.96592593, 0, 0.20000002, 0.4)
+mesh = SubResource("CylinderMesh_ny6d5")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_gqtcr")
+
+[node name="Chamber" type="MeshInstance3D" parent="ProtoModel/Body3" unique_id=1293122924]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, 0.4)
+mesh = SubResource("SphereMesh_ufbqx")
+surface_material_override/0 = SubResource("StandardMaterial3D_bjo1m")
+
+[node name="Legs" type="Node3D" parent="ProtoModel" unique_id=661520702]
+
+[node name="Glute1" type="MeshInstance3D" parent="ProtoModel/Legs" unique_id=1517644277]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, -0.1, 0.10000001)
+mesh = SubResource("SphereMesh_r1s8j")
+surface_material_override/0 = SubResource("StandardMaterial3D_pk8c6")
+
+[node name="Thigh" type="MeshInstance3D" parent="ProtoModel/Legs/Glute1" unique_id=1971546003]
+transform = Transform3D(0.9659258, 0.25881904, 0, -0.25, 0.93301266, 0.25881904, 0.0669873, -0.25, 0.9659258, 0, -0.3, 0)
+mesh = SubResource("CylinderMesh_uwek1")
+surface_material_override/0 = SubResource("StandardMaterial3D_r3bhm")
+
+[node name="Calf" type="MeshInstance3D" parent="ProtoModel/Legs/Glute1/Thigh" unique_id=411460524]
+transform = Transform3D(0.55913144, 0.77762103, 0.28753933, -0.6978782, 0.254202, 0.66958797, 0.44759226, -0.57505566, 0.68481743, -0.14082187, -0.39276528, 0.12073863)
+mesh = SubResource("CylinderMesh_oe11a")
+surface_material_override/0 = SubResource("StandardMaterial3D_r3bhm")
+
+[node name="Calf" type="MeshInstance3D" parent="ProtoModel/Legs/Glute1/Thigh/Calf" unique_id=214503521]
+transform = Transform3D(0.70710695, -0.70710725, 4.4703484e-08, 8.940697e-08, -2.9802322e-08, -1.0000006, 0.70710707, 0.7071072, 1.4901161e-07, 0.1856157, -0.3851983, -0.20079094)
+mesh = SubResource("CylinderMesh_oe11a")
+surface_material_override/0 = SubResource("StandardMaterial3D_r3bhm")
+
+[node name="Glute2" type="MeshInstance3D" parent="ProtoModel/Legs" unique_id=517387596]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, -0.1, 0.10000002)
+mesh = SubResource("SphereMesh_r1s8j")
+surface_material_override/0 = SubResource("StandardMaterial3D_pk8c6")
+
+[node name="Thigh" type="MeshInstance3D" parent="ProtoModel/Legs/Glute2" unique_id=1464234004]
+transform = Transform3D(0.9659257, -0.25881904, 0, 0.25113097, 0.9372337, 0.2419219, -0.06261399, -0.23367861, 0.9702957, 0, -0.3, 0)
+mesh = SubResource("CylinderMesh_uwek1")
+surface_material_override/0 = SubResource("StandardMaterial3D_vrtyn")
+
+[node name="Calf" type="MeshInstance3D" parent="ProtoModel/Legs/Glute2/Thigh" unique_id=278020970]
+transform = Transform3D(0.4705585, -0.7462642, 0.47081554, -0.6258958, 0.09380895, 0.77424616, -0.621958, -0.659009, -0.42294067, 0.16074744, -0.34511644, 0.17734446)
+mesh = SubResource("CylinderMesh_oe11a")
+surface_material_override/0 = SubResource("StandardMaterial3D_vrtyn")
+
+[node name="Calf" type="MeshInstance3D" parent="ProtoModel/Legs/Glute2/Thigh/Calf" unique_id=432444024]
+transform = Transform3D(0.70710695, -0.70710725, 4.4703484e-08, 8.940697e-08, -2.9802322e-08, -1.0000006, 0.70710707, 0.7071072, 1.4901161e-07, 0.1856157, -0.3851983, -0.20079094)
+mesh = SubResource("CylinderMesh_oe11a")
+surface_material_override/0 = SubResource("StandardMaterial3D_vrtyn")
+
+[node name="Glute3" type="MeshInstance3D" parent="ProtoModel/Legs" unique_id=1575790707]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, -0.5)
+mesh = SubResource("SphereMesh_r1s8j")
+surface_material_override/0 = SubResource("StandardMaterial3D_pk8c6")
+
+[node name="Thigh" type="MeshInstance3D" parent="ProtoModel/Legs/Glute3" unique_id=1074538671]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.9659258, -0.25881904, 0, 0.25881904, 0.9659258, 0, -0.3, 0)
+mesh = SubResource("CylinderMesh_uwek1")
+surface_material_override/0 = SubResource("StandardMaterial3D_vp8p8")
+
+[node name="Calf" type="MeshInstance3D" parent="ProtoModel/Legs/Glute3/Thigh" unique_id=1414836652]
+transform = Transform3D(-0.789149, -0.047367174, -0.6123724, -0.6085067, -0.0751652, 0.7899818, -0.083448276, 0.99604636, 0.030493394, 0.008621422, -0.30798566, -0.2371937)
+mesh = SubResource("CylinderMesh_oe11a")
+surface_material_override/0 = SubResource("StandardMaterial3D_vp8p8")
+
+[node name="Calf" type="MeshInstance3D" parent="ProtoModel/Legs/Glute3/Thigh/Calf" unique_id=880489379]
+transform = Transform3D(0.70710695, -0.70710725, 4.4703484e-08, 8.940697e-08, -2.9802322e-08, -1.0000006, 0.70710707, 0.7071072, 1.4901161e-07, 0.1856157, -0.3851983, -0.20079094)
+mesh = SubResource("CylinderMesh_oe11a")
+surface_material_override/0 = SubResource("StandardMaterial3D_vp8p8")
+
+[node name="Glute4" type="MeshInstance3D" parent="ProtoModel/Legs" unique_id=2139512050]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -0.1, -0.4)
+mesh = SubResource("SphereMesh_r1s8j")
+surface_material_override/0 = SubResource("StandardMaterial3D_pk8c6")
+
+[node name="Thigh" type="MeshInstance3D" parent="ProtoModel/Legs/Glute4" unique_id=1924075856]
+transform = Transform3D(0.96592575, 0.25881904, 0, -0.24999999, 0.93301266, -0.25881904, -0.06698729, 0.25, 0.9659258, 0, -0.3, 0)
+mesh = SubResource("CylinderMesh_uwek1")
+surface_material_override/0 = SubResource("StandardMaterial3D_v065e")
+
+[node name="Calf" type="MeshInstance3D" parent="ProtoModel/Legs/Glute4/Thigh" unique_id=1409907461]
+transform = Transform3D(-0.3061195, 0.87122715, -0.38373962, -0.6974529, 0.069113456, 0.71329045, 0.6479593, 0.4859923, 0.5864827, -0.18918896, -0.34698462, -0.1420083)
+mesh = SubResource("CylinderMesh_oe11a")
+surface_material_override/0 = SubResource("StandardMaterial3D_v065e")
+
+[node name="Calf" type="MeshInstance3D" parent="ProtoModel/Legs/Glute4/Thigh/Calf" unique_id=1435247951]
+transform = Transform3D(0.70710695, -0.70710725, 4.4703484e-08, 8.940697e-08, -2.9802322e-08, -1.0000006, 0.70710707, 0.7071072, 1.4901161e-07, 0.1856157, -0.3851983, -0.20079094)
+mesh = SubResource("CylinderMesh_oe11a")
+surface_material_override/0 = SubResource("StandardMaterial3D_v065e")
+
+[node name="Glute5" type="MeshInstance3D" parent="ProtoModel/Legs" unique_id=1312038972]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0.4)
+mesh = SubResource("SphereMesh_r1s8j")
+surface_material_override/0 = SubResource("StandardMaterial3D_pk8c6")
+
+[node name="Thigh" type="MeshInstance3D" parent="ProtoModel/Legs/Glute5" unique_id=2079030762]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.9659258, 0.25881904, 0, -0.25881904, 0.9659258, 0, -0.3, 0)
+mesh = SubResource("CylinderMesh_uwek1")
+surface_material_override/0 = SubResource("StandardMaterial3D_40iib")
+
+[node name="Calf" type="MeshInstance3D" parent="ProtoModel/Legs/Glute5/Thigh" unique_id=1848380246]
+transform = Transform3D(0.78914905, 0.047367174, 0.6123725, -0.6137069, 0.10082902, 0.78307, -0.024653092, -0.9937764, 0.108638674, -0.0113044195, -0.34067172, 0.2172116)
+mesh = SubResource("CylinderMesh_oe11a")
+surface_material_override/0 = SubResource("StandardMaterial3D_40iib")
+
+[node name="Calf" type="MeshInstance3D" parent="ProtoModel/Legs/Glute5/Thigh/Calf" unique_id=1168629311]
+transform = Transform3D(0.70710695, -0.70710725, 4.4703484e-08, 8.940697e-08, -2.9802322e-08, -1.0000006, 0.70710707, 0.7071072, 1.4901161e-07, 0.1856157, -0.3851983, -0.20079094)
+mesh = SubResource("CylinderMesh_oe11a")
+surface_material_override/0 = SubResource("StandardMaterial3D_40iib")
+
+[node name="Glute6" type="MeshInstance3D" parent="ProtoModel/Legs" unique_id=553330148]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -0.1, -0.4)
+mesh = SubResource("SphereMesh_r1s8j")
+surface_material_override/0 = SubResource("StandardMaterial3D_pk8c6")
+
+[node name="Thigh" type="MeshInstance3D" parent="ProtoModel/Legs/Glute6" unique_id=1620163737]
+transform = Transform3D(0.96592575, -0.25881904, 0, 0.24999999, 0.93301266, -0.25881904, 0.06698729, 0.25, 0.9659258, 0, -0.3, 0)
+mesh = SubResource("CylinderMesh_uwek1")
+surface_material_override/0 = SubResource("StandardMaterial3D_0s856")
+
+[node name="Calf" type="MeshInstance3D" parent="ProtoModel/Legs/Glute6/Thigh" unique_id=2019625193]
+transform = Transform3D(-0.6648407, -0.69030994, -0.28541198, -0.5500947, 0.19396448, 0.81226474, -0.5053544, 0.6970306, -0.50869143, 0.16888583, -0.37248212, -0.1483762)
+mesh = SubResource("CylinderMesh_oe11a")
+surface_material_override/0 = SubResource("StandardMaterial3D_0s856")
+
+[node name="Calf" type="MeshInstance3D" parent="ProtoModel/Legs/Glute6/Thigh/Calf" unique_id=71143407]
+transform = Transform3D(0.70710695, -0.70710725, 4.4703484e-08, 8.940697e-08, -2.9802322e-08, -1.0000006, 0.70710707, 0.7071072, 1.4901161e-07, 0.1856157, -0.3851983, -0.20079094)
+mesh = SubResource("CylinderMesh_oe11a")
+surface_material_override/0 = SubResource("StandardMaterial3D_0s856")
+
+[node name="z&z_proto_zombie" type="Node3D" parent="ProtoModel" unique_id=863507647]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ProtoModel/z&z_proto_zombie" unique_id=2072389965]
+root_node = NodePath("../..")
+
+[node name="PlayerDetector" type="ShapeCast3D" parent="ProtoModel" unique_id=230124984]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 1.3000001)
+shape = SubResource("CapsuleShape3D_5q6es")
+target_position = Vector3(0, 0.5, 1)
+collision_mask = 4
+
+[node name="AreaAttack" parent="ProtoModel" unique_id=688239943 instance=ExtResource("2_p6xld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 1.3000001)
+target_position = Vector3(0, 0.5, 1)
+
+[node name="Spawners" type="Node3D" parent="ProtoModel" unique_id=1181354575]
+
+[node name="Marker3D" type="Marker3D" parent="ProtoModel/Spawners" unique_id=364566660]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5)
+
+[node name="Marker3D2" type="Marker3D" parent="ProtoModel/Spawners" unique_id=1074776337]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4000001, 0, -1.4)
+
+[node name="Marker3D3" type="Marker3D" parent="ProtoModel/Spawners" unique_id=1732980121]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4, 0, -1.4000001)
+
+[node name="HealthComponent" parent="." unique_id=263350021 instance=ExtResource("1_7aw2c")]
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1875547112]
+avoidance_enabled = true
+debug_enabled = true
+
+[node name="Timer" type="Timer" parent="." unique_id=1476773128]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[connection signal="defeat" from="HealthComponent" to="." method="_on_health_component_defeat"]
+[connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
