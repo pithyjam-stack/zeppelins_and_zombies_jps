@@ -39,6 +39,7 @@ albedo_color = Color(0.4732359, 0, 0.04630114, 1)
 collision_layer = 9
 collision_mask = 5
 script = ExtResource("1_gl10n")
+time_to_attack = 0.5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1441358735]
 shape = SubResource("CapsuleShape3D_6xk8f")
@@ -148,7 +149,11 @@ autoplay = &"Walk"
 avoidance_enabled = true
 debug_enabled = true
 
+[node name="AttackTimer" type="Timer" parent="." unique_id=439938293]
+autostart = true
+
 [connection signal="defeat" from="HealthComponent" to="." method="_on_health_component_defeat"]
 [connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
 
 [editable path="ProtoModel/z&z_proto_zombie"]

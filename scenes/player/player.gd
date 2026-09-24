@@ -14,6 +14,8 @@ class_name Player
 
 @export var starting_weapon : PackedScene
 
+@export var max_health : float = 100.0
+
 const JUMP_VELOCITY = 4.5
 
 
@@ -29,7 +31,14 @@ var current_weapon : Weapon
 @onready var center_pivot: Node3D = $CenterPivot
 @onready var hand_position: Node3D = $CenterPivot/HandPosition
 
+@onready var health_component: HealthComponent = $HealthComponent
+@onready var collision_shape_3d: CollisionShape3D = $CollisionShape3D
+@onready var ray_camera: Camera3D = $CameraHandle/RayCamera
+@onready var mesh_instance_3d: MeshInstance3D = $MeshInstance3D
+@onready var blood_spew: CPUParticles3D = $BloodSpew
+
 func _ready() -> void:
+	health_component.update_max_health(max_health)
 	if starting_weapon:
 		add_weapon(starting_weapon)
 		equip_weapon(0)
@@ -136,3 +145,24 @@ func _rotate_to_direction(local_direction: Vector3, delta: float) -> void:
 	var turn_weight := clampf(rotation_smoothness * delta, 0.0, 1.0)
 	$MeshInstance3D.global_basis = $MeshInstance3D.global_basis.slerp(target_basis, turn_weight)
 	center_pivot.global_basis = center_pivot.global_basis.slerp(target_basis, turn_weight)
+
+
+func _on_health_component_defeat() -> void:
+	print("You died!")
+	_temp_defeat_anim()
+	collision_shape_3d.disabled = true
+	set_physics_process(false)
+	ray_camera.set_process(false)
+
+func _on_health_component_health_changed() -> void:
+	print(health_component.current_health)
+
+func _temp_defeat_anim() -> void:
+	var tween = create_tween()
+	tween.tween_property(mesh_instance_3d, "rotation_degrees:x", 90.0, 0.5)
+	tween.tween_property(mesh_instance_3d, "position", Vector3(0, -0.5, 0), 0.5)
+	blood_spew.emitting = true
+	await get_tree().create_timer(3.0).timeout
+	blood_spew.emitting = false
+	
+	

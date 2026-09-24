@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://cs1b0s645vbuo" path="res://scenes/player/player.gd" id="1_dovo2"]
 [ext_resource type="PackedScene" uid="uid://b6e67utmikg8o" path="res://scenes/weapons/pistol_weapon.tscn" id="2_lvxji"]
 [ext_resource type="PackedScene" uid="uid://bm3v2famfv788" path="res://scenes/player/ray_camera.tscn" id="3_gmlin"]
+[ext_resource type="PackedScene" uid="uid://dgqo3lt6tn58d" path="res://scenes/player/health_component.tscn" id="5_p47bc"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dovo2"]
 
@@ -13,6 +14,13 @@ material = ExtResource("1_8afob")
 [sub_resource type="SphereMesh" id="SphereMesh_lvxji"]
 radius = 0.2
 height = 0.4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p47bc"]
+albedo_color = Color(0.66, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_75vfm"]
+material = SubResource("StandardMaterial3D_p47bc")
+size = Vector3(0.2, 0.1, 0.2)
 
 [node name="Player" type="CharacterBody3D" unique_id=230586961 groups=["Player"]]
 collision_layer = 5
@@ -43,3 +51,19 @@ transform = Transform3D(-4.371139e-08, 0.4616557, -0.8870592, 0, 0.8870592, 0.46
 
 [node name="HandPosition" type="Node3D" parent="CenterPivot" unique_id=1476521204]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.533473, 0, -0.5308655)
+
+[node name="HealthComponent" parent="." unique_id=263350021 instance=ExtResource("5_p47bc")]
+
+[node name="BloodSpew" type="CPUParticles3D" parent="." unique_id=683448444]
+emitting = false
+amount = 64
+lifetime = 1.5
+explosiveness = 1.0
+mesh = SubResource("BoxMesh_75vfm")
+direction = Vector3(0, 1, 0)
+spread = 30.0
+initial_velocity_min = 5.0
+initial_velocity_max = 5.0
+
+[connection signal="defeat" from="HealthComponent" to="." method="_on_health_component_defeat"]
+[connection signal="health_changed" from="HealthComponent" to="." method="_on_health_component_health_changed"]

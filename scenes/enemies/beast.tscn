@@ -8,10 +8,6 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mi8ht"]
 
-[sub_resource type="SphereMesh" id="SphereMesh_xl3qt"]
-radius = 0.01
-height = 0.15
-
 [sub_resource type="BoxMesh" id="BoxMesh_kby84"]
 material = ExtResource("2_kby84")
 size = Vector3(0.2, 0.5, 0.2)
@@ -26,6 +22,10 @@ radius = 0.3
 height = 0.6
 radial_segments = 32
 rings = 16
+
+[sub_resource type="SphereMesh" id="SphereMesh_xl3qt"]
+radius = 0.01
+height = 0.15
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_citb0"]
 material = ExtResource("2_kby84")
@@ -64,60 +64,9 @@ speed = 10.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1484143956]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
-top_level = true
 shape = SubResource("CapsuleShape3D_mi8ht")
 
 [node name="ProtoModel" type="Node3D" parent="." unique_id=243465890]
-
-[node name="Teeth" type="Node3D" parent="ProtoModel" unique_id=765531765]
-
-[node name="Tooth" type="MeshInstance3D" parent="ProtoModel/Teeth" unique_id=1352736231]
-transform = Transform3D(1, 0, 0, 0, 0.8660254, -0.5, 0, 0.5, 0.8660254, -0.018234305, -0.30235958, 1.3906652)
-mesh = SubResource("SphereMesh_xl3qt")
-
-[node name="Tooth2" type="MeshInstance3D" parent="ProtoModel/Teeth" unique_id=656021258]
-transform = Transform3D(1, 0, 0, 0, 0.8660254, -0.5, 0, 0.5, 0.8660254, 0.023048595, -0.30235958, 1.3906652)
-mesh = SubResource("SphereMesh_xl3qt")
-
-[node name="Tooth3" type="MeshInstance3D" parent="ProtoModel/Teeth" unique_id=1250986723]
-transform = Transform3D(1, 0, 0, 0, 0.8660254, -0.5, 0, 0.5, 0.8660254, -0.03811434, -0.27395034, 1.3582951)
-mesh = SubResource("SphereMesh_xl3qt")
-
-[node name="Tooth4" type="MeshInstance3D" parent="ProtoModel/Teeth" unique_id=254060715]
-transform = Transform3D(1, 0, 0, 0, 0.8660254, -0.5, 0, 0.5, 0.8660254, 0.039644986, -0.27395034, 1.3582951)
-mesh = SubResource("SphereMesh_xl3qt")
-
-[node name="Tooth5" type="MeshInstance3D" parent="ProtoModel/Teeth" unique_id=793592543]
-transform = Transform3D(1, 0, 0, 0, 0.8660254, -0.5, 0, 0.5, 0.8660254, -0.053775646, -0.24330248, 1.3039641)
-mesh = SubResource("SphereMesh_xl3qt")
-
-[node name="Tooth6" type="MeshInstance3D" parent="ProtoModel/Teeth" unique_id=1897090211]
-transform = Transform3D(1, 0, 0, 0, 0.8660254, -0.5, 0, 0.5, 0.8660254, 0.05805525, -0.24330248, 1.3039641)
-mesh = SubResource("SphereMesh_xl3qt")
-
-[node name="Tooth7" type="MeshInstance3D" parent="ProtoModel/Teeth" unique_id=208538467]
-transform = Transform3D(-1, -7.5710346e-08, 4.371139e-08, 8.742278e-08, -0.8660254, 0.5, 0, 0.5, 0.8660254, 0.03831283, -0.05000709, 1.4496108)
-mesh = SubResource("SphereMesh_xl3qt")
-
-[node name="Tooth8" type="MeshInstance3D" parent="ProtoModel/Teeth" unique_id=71523029]
-transform = Transform3D(-1, -7.5710346e-08, 4.371139e-08, 8.742278e-08, -0.8660254, 0.5, 0, 0.5, 0.8660254, -0.039180726, -0.05000709, 1.4496108)
-mesh = SubResource("SphereMesh_xl3qt")
-
-[node name="Tooth9" type="MeshInstance3D" parent="ProtoModel/Teeth" unique_id=1889718502]
-transform = Transform3D(-1, -7.5710346e-08, 4.371139e-08, 8.742278e-08, -0.8660254, 0.5, 0, 0.5, 0.8660254, 0.07140334, -0.05319999, 1.428288)
-mesh = SubResource("SphereMesh_xl3qt")
-
-[node name="Tooth10" type="MeshInstance3D" parent="ProtoModel/Teeth" unique_id=1570743816]
-transform = Transform3D(-1, -7.5710346e-08, 4.371139e-08, 8.742278e-08, -0.8660254, 0.5, 0, 0.5, 0.8660254, -0.07808164, -0.05319999, 1.428288)
-mesh = SubResource("SphereMesh_xl3qt")
-
-[node name="Tooth11" type="MeshInstance3D" parent="ProtoModel/Teeth" unique_id=872737138]
-transform = Transform3D(-1, -7.5710346e-08, 4.371139e-08, 8.742278e-08, -0.8660254, 0.5, 0, 0.5, 0.8660254, 0.11510511, -0.08384786, 1.373957)
-mesh = SubResource("SphereMesh_xl3qt")
-
-[node name="Tooth12" type="MeshInstance3D" parent="ProtoModel/Teeth" unique_id=539961629]
-transform = Transform3D(-1, -7.5710346e-08, 4.371139e-08, 8.742278e-08, -0.8660254, 0.5, 0, 0.5, 0.8660254, -0.11980957, -0.08384784, 1.373957)
-mesh = SubResource("SphereMesh_xl3qt")
 
 [node name="Legs" type="Node3D" parent="ProtoModel" unique_id=564785606]
 
@@ -168,6 +117,56 @@ mesh = SubResource("SphereMesh_n13rj")
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="ProtoModel/Legs" unique_id=292747919]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.20000002, 0.5)
 mesh = SubResource("SphereMesh_n13rj")
+
+[node name="Teeth" type="Node3D" parent="ProtoModel/Legs" unique_id=765531765]
+
+[node name="Tooth" type="MeshInstance3D" parent="ProtoModel/Legs/Teeth" unique_id=1352736231]
+transform = Transform3D(1, 0, 0, 0, 0.8660254, -0.5, 0, 0.5, 0.8660254, -0.018234305, -0.30235958, 1.3906652)
+mesh = SubResource("SphereMesh_xl3qt")
+
+[node name="Tooth2" type="MeshInstance3D" parent="ProtoModel/Legs/Teeth" unique_id=656021258]
+transform = Transform3D(1, 0, 0, 0, 0.8660254, -0.5, 0, 0.5, 0.8660254, 0.023048595, -0.30235958, 1.3906652)
+mesh = SubResource("SphereMesh_xl3qt")
+
+[node name="Tooth3" type="MeshInstance3D" parent="ProtoModel/Legs/Teeth" unique_id=1250986723]
+transform = Transform3D(1, 0, 0, 0, 0.8660254, -0.5, 0, 0.5, 0.8660254, -0.03811434, -0.27395034, 1.3582951)
+mesh = SubResource("SphereMesh_xl3qt")
+
+[node name="Tooth4" type="MeshInstance3D" parent="ProtoModel/Legs/Teeth" unique_id=254060715]
+transform = Transform3D(1, 0, 0, 0, 0.8660254, -0.5, 0, 0.5, 0.8660254, 0.039644986, -0.27395034, 1.3582951)
+mesh = SubResource("SphereMesh_xl3qt")
+
+[node name="Tooth5" type="MeshInstance3D" parent="ProtoModel/Legs/Teeth" unique_id=793592543]
+transform = Transform3D(1, 0, 0, 0, 0.8660254, -0.5, 0, 0.5, 0.8660254, -0.053775646, -0.24330248, 1.3039641)
+mesh = SubResource("SphereMesh_xl3qt")
+
+[node name="Tooth6" type="MeshInstance3D" parent="ProtoModel/Legs/Teeth" unique_id=1897090211]
+transform = Transform3D(1, 0, 0, 0, 0.8660254, -0.5, 0, 0.5, 0.8660254, 0.05805525, -0.24330248, 1.3039641)
+mesh = SubResource("SphereMesh_xl3qt")
+
+[node name="Tooth7" type="MeshInstance3D" parent="ProtoModel/Legs/Teeth" unique_id=208538467]
+transform = Transform3D(-1, -7.5710346e-08, 4.371139e-08, 8.742278e-08, -0.8660254, 0.5, 0, 0.5, 0.8660254, 0.03831283, -0.05000709, 1.4496108)
+mesh = SubResource("SphereMesh_xl3qt")
+
+[node name="Tooth8" type="MeshInstance3D" parent="ProtoModel/Legs/Teeth" unique_id=71523029]
+transform = Transform3D(-1, -7.5710346e-08, 4.371139e-08, 8.742278e-08, -0.8660254, 0.5, 0, 0.5, 0.8660254, -0.039180726, -0.05000709, 1.4496108)
+mesh = SubResource("SphereMesh_xl3qt")
+
+[node name="Tooth9" type="MeshInstance3D" parent="ProtoModel/Legs/Teeth" unique_id=1889718502]
+transform = Transform3D(-1, -7.5710346e-08, 4.371139e-08, 8.742278e-08, -0.8660254, 0.5, 0, 0.5, 0.8660254, 0.07140334, -0.05319999, 1.428288)
+mesh = SubResource("SphereMesh_xl3qt")
+
+[node name="Tooth10" type="MeshInstance3D" parent="ProtoModel/Legs/Teeth" unique_id=1570743816]
+transform = Transform3D(-1, -7.5710346e-08, 4.371139e-08, 8.742278e-08, -0.8660254, 0.5, 0, 0.5, 0.8660254, -0.07808164, -0.05319999, 1.428288)
+mesh = SubResource("SphereMesh_xl3qt")
+
+[node name="Tooth11" type="MeshInstance3D" parent="ProtoModel/Legs/Teeth" unique_id=872737138]
+transform = Transform3D(-1, -7.5710346e-08, 4.371139e-08, 8.742278e-08, -0.8660254, 0.5, 0, 0.5, 0.8660254, 0.11510511, -0.08384786, 1.373957)
+mesh = SubResource("SphereMesh_xl3qt")
+
+[node name="Tooth12" type="MeshInstance3D" parent="ProtoModel/Legs/Teeth" unique_id=539961629]
+transform = Transform3D(-1, -7.5710346e-08, 4.371139e-08, 8.742278e-08, -0.8660254, 0.5, 0, 0.5, 0.8660254, -0.11980957, -0.08384784, 1.373957)
+mesh = SubResource("SphereMesh_xl3qt")
 
 [node name="Node3D" type="Node3D" parent="ProtoModel" unique_id=1863752297]
 
@@ -268,5 +267,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
 avoidance_enabled = true
 debug_enabled = true
 
+[node name="AttackTimer" type="Timer" parent="." unique_id=1798871196]
+autostart = true
+
 [connection signal="defeat" from="HealthComponent" to="." method="_on_health_component_defeat"]
 [connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

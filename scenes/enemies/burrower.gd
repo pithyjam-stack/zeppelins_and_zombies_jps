@@ -1,7 +1,6 @@
 extends Zombie
 
 @onready var sub_model: Node3D = $ProtoModel/SubModel
-@onready var area_attack: ShapeCast3D = $ProtoModel/AreaAttack
 
 func _burrow() -> void:
 	var tween = create_tween()

@@ -356,28 +356,22 @@ curve = SubResource("Curve3D_p0eyi")
 
 [node name="Enemies" type="Node3D" parent="." unique_id=890266399]
 
-[node name="Zombie" parent="Enemies" unique_id=2114948265 instance=ExtResource("8_jeyjv")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 20, 1.0000002, 28.39196)
+[node name="BulgingNester" parent="Enemies" unique_id=1368245131 groups=["Enemy"] instance=ExtResource("17_cjdrm")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 19, 1.0999999, 28)
 
-[node name="Zombie3" parent="Enemies" unique_id=1813140110 instance=ExtResource("8_jeyjv")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 20, 1.0000002, 22.39196)
+[node name="Burrower" parent="Enemies" unique_id=77184226 groups=["Enemy"] instance=ExtResource("12_bg77c")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 17, 0.5, 32)
 
-[node name="Zombie2" parent="Enemies" unique_id=723659482 instance=ExtResource("8_jeyjv")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 17, 1.0000002, 19.39196)
-
-[node name="HalfZombie" parent="Enemies" unique_id=185993919 instance=ExtResource("9_jeyjv")]
-transform = Transform3D(0.25881907, 0, -0.9659258, 0, 1, 0, 0.9659258, 0, 0.25881907, 18, 0.5000001, 25)
-
-[node name="TallShieldling" parent="Enemies" unique_id=1019572460 instance=ExtResource("10_b02b2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 1.5000005, 28)
-
-[node name="Burrower" parent="Enemies" unique_id=77184226 instance=ExtResource("12_bg77c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.50000095, 9.8)
+[node name="Zombie" parent="Enemies" unique_id=2114948265 groups=["Enemy"] instance=ExtResource("8_jeyjv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23, 1.0000004, 30)
 
 [node name="Beast" parent="Enemies" unique_id=523339716 instance=ExtResource("11_p1cwy")]
-transform = Transform3D(-0.25881904, 0, -0.9659258, 0, 1, 0, 0.9659258, 0, -0.25881904, 15, 0.50000083, 35)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36, 0.5, 7)
 
-[node name="Bulging_Nester" parent="Enemies" unique_id=1368245131 instance=ExtResource("17_cjdrm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.659937, 1.1000004, 21.112331)
+[node name="HalfZombie" parent="Enemies" unique_id=185993919 groups=["Enemy"] instance=ExtResource("9_jeyjv")]
+transform = Transform3D(-0.50000006, 0, -0.8660254, 0, 1, 0, 0.8660254, 0, -0.50000006, 11, 0.5000001, 31)
+
+[node name="TallShieldling" parent="Enemies" unique_id=1787914656 groups=["Enemy"] instance=ExtResource("10_b02b2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0.50000024, 13)
 
 [editable path="Player"]

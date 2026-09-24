@@ -39,6 +39,7 @@ current_strength = 10.0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1651149682]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, -0.5, 0)
 shape = SubResource("CapsuleShape3D_jkd7k")
+debug_color = Color(0.7, 0, 0.011666489, 0.5921569)
 
 [node name="ProtoModel" type="Node3D" parent="." unique_id=1360635947]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6, 0)
