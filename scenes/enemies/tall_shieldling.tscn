@@ -42,7 +42,7 @@ albedo_color = Color(0.4732359, 0, 0.04630114, 1)
 height = 3.0
 radius = 0.75
 
-[node name="TallShieldling" type="CharacterBody3D" unique_id=185993919]
+[node name="TallShieldling" type="CharacterBody3D" unique_id=185993919 groups=["Enemy"]]
 collision_layer = 9
 collision_mask = 5
 script = ExtResource("1_xbro7")
@@ -114,6 +114,7 @@ avoidance_enabled = true
 debug_enabled = true
 
 [node name="AttackTimer" type="Timer" parent="." unique_id=26965855]
+wait_time = 2.0
 autostart = true
 
 [connection signal="defeat" from="HealthComponent" to="." method="_on_health_component_defeat"]

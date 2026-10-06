@@ -93,7 +93,7 @@ albedo_color = Color(0.92856026, 0.35802895, 0.34955952, 1)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5q6es"]
 
-[node name="BulgingNester" type="CharacterBody3D" unique_id=1368245131]
+[node name="BulgingNester" type="CharacterBody3D" unique_id=1368245131 groups=["Enemy"]]
 script = ExtResource("1_wu0og")
 burrower = ExtResource("2_5q6es")
 damage = 0

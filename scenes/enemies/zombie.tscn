@@ -35,7 +35,7 @@ albedo_color = Color(0.4732359, 0, 0.04630114, 1)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gl10n"]
 
-[node name="Zombie" type="CharacterBody3D" unique_id=2114948265]
+[node name="Zombie" type="CharacterBody3D" unique_id=2114948265 groups=["Enemy"]]
 collision_layer = 9
 collision_mask = 5
 script = ExtResource("1_gl10n")

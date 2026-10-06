@@ -34,7 +34,8 @@ height = 0.1
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3oc2p"]
 albedo_color = Color(0.4732359, 0, 0.04630114, 1)
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ru6kr"]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_boq17"]
+radius = 4.0
 
 [node name="HalfZombie" type="CharacterBody3D" unique_id=185993919]
 collision_layer = 9
@@ -82,12 +83,17 @@ transform = Transform3D(1, 0, 0, 0, 0.96592593, -0.25881907, 0, 0.25881907, 0.96
 mesh = SubResource("CylinderMesh_hkptg")
 surface_material_override/0 = SubResource("StandardMaterial3D_3oc2p")
 
+[node name="Marker3D" type="Marker3D" parent="ProtoModel" unique_id=1572556918]
+transform = Transform3D(1, 0, 0, 0, 0.9961947, 0.08715577, 0, -0.08715577, 0.9961947, 0, 0.2, 0.90000004)
+
 [node name="PlayerDetector" type="ShapeCast3D" parent="ProtoModel" unique_id=774262982]
-shape = SubResource("CapsuleShape3D_ru6kr")
-target_position = Vector3(0, 0.5, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+enabled = false
+shape = SubResource("CylinderShape3D_boq17")
 collision_mask = 4
 
 [node name="AreaAttack" parent="ProtoModel" unique_id=688239943 instance=ExtResource("3_boq17")]
+enabled = false
 target_position = Vector3(0, 0.5, 1)
 
 [node name="z&z_proto_zombie" type="Node3D" parent="ProtoModel" unique_id=407470670]

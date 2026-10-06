@@ -15,7 +15,6 @@
 [ext_resource type="PackedScene" uid="uid://b6wv1i1ga6cfj" path="res://scenes/enemies/half_zombie.tscn" id="9_jeyjv"]
 [ext_resource type="PackedScene" uid="uid://dud5esie6t4yg" path="res://scenes/enemies/tall_shieldling.tscn" id="10_b02b2"]
 [ext_resource type="PackedScene" uid="uid://ce7m6xiof1hb6" path="res://scenes/enemies/beast.tscn" id="11_p1cwy"]
-[ext_resource type="PackedScene" uid="uid://hmip0vth34mb" path="res://scenes/enemies/burrower.tscn" id="12_bg77c"]
 [ext_resource type="PackedScene" uid="uid://8i8agarb45j3" path="res://scenes/enemies/bulging_nester.tscn" id="17_cjdrm"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_68ygf"]
@@ -356,22 +355,19 @@ curve = SubResource("Curve3D_p0eyi")
 
 [node name="Enemies" type="Node3D" parent="." unique_id=890266399]
 
-[node name="BulgingNester" parent="Enemies" unique_id=1368245131 groups=["Enemy"] instance=ExtResource("17_cjdrm")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 19, 1.0999999, 28)
-
-[node name="Burrower" parent="Enemies" unique_id=77184226 groups=["Enemy"] instance=ExtResource("12_bg77c")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 17, 0.5, 32)
-
-[node name="Zombie" parent="Enemies" unique_id=2114948265 groups=["Enemy"] instance=ExtResource("8_jeyjv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23, 1.0000004, 30)
-
-[node name="Beast" parent="Enemies" unique_id=523339716 instance=ExtResource("11_p1cwy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36, 0.5, 7)
-
 [node name="HalfZombie" parent="Enemies" unique_id=185993919 groups=["Enemy"] instance=ExtResource("9_jeyjv")]
 transform = Transform3D(-0.50000006, 0, -0.8660254, 0, 1, 0, 0.8660254, 0, -0.50000006, 11, 0.5000001, 31)
 
-[node name="TallShieldling" parent="Enemies" unique_id=1787914656 groups=["Enemy"] instance=ExtResource("10_b02b2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0.50000024, 13)
+[node name="Zombie" parent="Enemies" unique_id=2114948265 instance=ExtResource("8_jeyjv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 1.0000001, 25)
+
+[node name="TallShieldling" parent="Enemies" unique_id=468286506 instance=ExtResource("10_b02b2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27, 0.5000005, 27)
+
+[node name="Beast" parent="Enemies" unique_id=523339716 instance=ExtResource("11_p1cwy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34, 0.50000024, 11)
+
+[node name="BulgingNester" parent="Enemies" unique_id=1368245131 instance=ExtResource("17_cjdrm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 1.1000001, 27)
 
 [editable path="Player"]

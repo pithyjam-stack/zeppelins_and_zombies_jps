@@ -150,7 +150,7 @@ func _rotate_to_direction(local_direction: Vector3, delta: float) -> void:
 func _on_health_component_defeat() -> void:
 	print("You died!")
 	_temp_defeat_anim()
-	collision_shape_3d.disabled = true
+	collision_shape_3d.set_deferred("disabled", true)
 	set_physics_process(false)
 	ray_camera.set_process(false)
 

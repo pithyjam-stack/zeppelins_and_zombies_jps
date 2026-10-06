@@ -2,6 +2,8 @@ extends CharacterBody3D
 
 class_name Zombie
 
+signal attackable
+
 @export var max_health : float = 20.0
 @export var damage : int = 10
 @export var speed : float = 5.0
