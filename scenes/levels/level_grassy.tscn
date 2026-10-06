@@ -333,7 +333,7 @@ material_override = ExtResource("3_1ase0")
 radius = 0.29074773
 
 [node name="ProtoZeppelin" parent="NavigationRegion3D" unique_id=1089814323 instance=ExtResource("4_1ase0")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.2545648, 1.0000002, 20.694878)
+transform = Transform3D(-4.371139e-08, 0, 1, -0.9848077, 0.17364822, -4.304731e-08, -0.17364822, -0.9848077, -7.590405e-09, 1.2545648, 1.0000002, 20.694878)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=449024414]
 environment = SubResource("Environment_jdjwh")

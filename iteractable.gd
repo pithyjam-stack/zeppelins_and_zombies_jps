@@ -1,13 +1,17 @@
 extends Node3D
 
+signal repairing
+
 @export var collision_radius := 2.0
 
 var nearby_player : Node3D = null
+var hold_time := 0.0
 
 @onready var detection_area: Area3D = $DetectionArea
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	#hold_time = 0
 	_setup_collision_shape()
 	
 	detection_area.connect("body_entered", _on_body_entered)
@@ -16,6 +20,15 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if nearby_player and Input.is_action_just_pressed("interact"):
 		try_interact(nearby_player)
+	if nearby_player and Input.is_action_pressed("repair"):
+		
+		hold_time += delta
+		print("Holding... Current time: ", hold_time)
+	if Input.is_action_just_released("repair"):
+		print("Button was held for a total of: ", hold_time, " seconds.")
+		repairing.emit(hold_time)
+		
+		hold_time = 0.0
 
 func try_interact(player: Node3D) -> void:
 	if not can_interact():

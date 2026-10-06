@@ -45,7 +45,7 @@ mesh = SubResource("SphereMesh_lvxji")
 [node name="CameraHandle" type="Node3D" parent="." unique_id=891848014]
 
 [node name="RayCamera" parent="CameraHandle" unique_id=1844671264 instance=ExtResource("3_gmlin")]
-transform = Transform3D(-4.371139e-08, 0.4616557, -0.8870592, 0, 0.8870592, 0.4616557, 1, 2.0179613e-08, -3.877459e-08, -7.77048, 5.587895, -3.3965847e-07)
+transform = Transform3D(-4.371139e-08, 0.4616557, -0.8870592, 0, 0.8870592, 0.4616557, 1, 2.0179613e-08, -3.877459e-08, -10, 5, 0)
 
 [node name="CenterPivot" type="Node3D" parent="." unique_id=540035763]
 
