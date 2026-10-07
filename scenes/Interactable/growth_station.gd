@@ -13,5 +13,5 @@ func _process(delta: float) -> void:
 
 func on_interacted(player: Node3D) -> void:
 	var model := player.get_node("MeshInstance3D")
-	model.get_node("MeshInstance3D").scale = scale_factor
-	model.get_node("MeshInstance3D2").scale = scale_factor
+	model.get_node("MeshInstance3D").scale += scale_factor * 0.5
+	model.get_node("MeshInstance3D2").scale += scale_factor * 0.5
