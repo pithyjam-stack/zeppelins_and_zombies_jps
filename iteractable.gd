@@ -1,11 +1,8 @@
 extends Node3D
 
-signal repairing
-
 @export var collision_radius := 2.0
 
 var nearby_player : Node3D = null
-var hold_time := 0.0
 
 @onready var detection_area: Area3D = $DetectionArea
 
@@ -20,15 +17,9 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if nearby_player and Input.is_action_just_pressed("interact"):
 		try_interact(nearby_player)
+	
 	if nearby_player and Input.is_action_pressed("repair"):
-		
-		hold_time += delta
-		print("Holding... Current time: ", hold_time)
-	if Input.is_action_just_released("repair"):
-		print("Button was held for a total of: ", hold_time, " seconds.")
-		repairing.emit(hold_time)
-		
-		hold_time = 0.0
+		try_repair(nearby_player, delta)
 
 func try_interact(player: Node3D) -> void:
 	if not can_interact():
@@ -38,6 +29,13 @@ func try_interact(player: Node3D) -> void:
 	print("Player interacted with ", station.name)
 	if station.has_method("on_interacted"):
 		station.on_interacted(nearby_player)
+
+func try_repair(player: Node3D, delta : float) -> void:
+	
+	var station := get_parent()
+	#print("Player repaired ", station.name)
+	if station.has_method("_on_repaired"):
+		station._on_repaired(nearby_player, delta)
 
 func can_interact() -> bool:
 	return true

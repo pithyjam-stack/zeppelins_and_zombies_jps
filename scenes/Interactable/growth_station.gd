@@ -12,6 +12,17 @@ func _process(delta: float) -> void:
 	pass
 
 func on_interacted(player: Node3D) -> void:
+	# v v v Code below is potentially deprecated v v v
+	"""
 	var model := player.get_node("MeshInstance3D")
 	model.get_node("MeshInstance3D").scale += scale_factor * 0.5
 	model.get_node("MeshInstance3D2").scale += scale_factor * 0.5
+	"""
+	
+	# v v v Health Station Implementation v v v 
+	var health : HealthComponent = player.health_component
+	if health.current_health < health.max_health - 4:
+		health.current_health += 5 
+	else:
+		health.current_health += (health.max_health - health.current_health)
+	

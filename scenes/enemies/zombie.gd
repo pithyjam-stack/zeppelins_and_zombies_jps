@@ -23,7 +23,7 @@ signal attackable
 func _ready() -> void:
 	health_component.update_max_health(max_health)
 	attack_timer.set_wait_time(time_to_attack)
-	print(attack_timer.wait_time)
+	#print(attack_timer.wait_time)
 
 func check_for_attacks() -> void:
 	for collision_id in player_detector.get_collision_count():

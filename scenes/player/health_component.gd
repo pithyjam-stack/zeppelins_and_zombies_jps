@@ -16,7 +16,7 @@ var current_health: float:
 func update_max_health(max_hp_in: float) -> void:
 	max_health = max_hp_in
 	current_health = max_health
-	print(max_health)
+	#print(max_health)
 
 func take_damage(damage_in: float) -> void:
 	current_health -= damage_in

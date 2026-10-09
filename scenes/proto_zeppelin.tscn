@@ -253,5 +253,4 @@ collision_radius = 3.0
 [node name="RepairTimer" type="Timer" parent="." unique_id=1255065547]
 wait_time = 2.0
 
-[connection signal="repairing" from="Iteractable" to="." method="_on_iteractable_repairing"]
 [connection signal="timeout" from="RepairTimer" to="." method="_on_timer_timeout"]
