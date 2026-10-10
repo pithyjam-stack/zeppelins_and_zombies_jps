@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c108oix6ig6fm" path="res://scripts/proto_zeppelin.gd" id="1_fhtpd"]
 [ext_resource type="PackedScene" uid="uid://cn4uvk1vuv6ch" path="res://models/ProtoZeppelin_Base.glb" id="1_jygee"]
-[ext_resource type="PackedScene" uid="uid://dpexljivghoqb" path="res://scenes/Interactable/iteractable.tscn" id="2_kw6me"]
+[ext_resource type="PackedScene" uid="uid://dpexljivghoqb" path="res://scenes/Interactable/interactable.tscn" id="2_kw6me"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jygee"]
 albedo_color = Color(0.3515629, 0.3515629, 0.35156286, 1)

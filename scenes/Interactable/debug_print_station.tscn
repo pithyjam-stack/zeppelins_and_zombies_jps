@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dtt7ca4gwhp56"]
 
 [ext_resource type="Script" uid="uid://d2i2gvkvorfqa" path="res://scenes/Interactable/debug_print_station.gd" id="1_4shky"]
-[ext_resource type="PackedScene" uid="uid://dpexljivghoqb" path="res://scenes/Interactable/iteractable.tscn" id="2_m0xk2"]
+[ext_resource type="PackedScene" uid="uid://dpexljivghoqb" path="res://scenes/Interactable/interactable.tscn" id="2_m0xk2"]
 
 [node name="DebugPrintStation" type="Node3D" unique_id=1423883054]
 script = ExtResource("1_4shky")

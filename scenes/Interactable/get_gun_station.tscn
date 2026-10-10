@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dme4f6nt4unme"]
 
 [ext_resource type="Script" uid="uid://c6xwue8sxsg0c" path="res://scenes/Interactable/get_gun_station.gd" id="1_e28n3"]
-[ext_resource type="PackedScene" uid="uid://dpexljivghoqb" path="res://scenes/Interactable/iteractable.tscn" id="1_ecqm5"]
+[ext_resource type="PackedScene" uid="uid://dpexljivghoqb" path="res://scenes/Interactable/interactable.tscn" id="1_ecqm5"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_e28n3"]
 top_radius = 1.5

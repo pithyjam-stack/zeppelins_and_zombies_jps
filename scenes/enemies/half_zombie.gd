@@ -7,7 +7,7 @@ extends Zombie
 
 func _on_attack_timer_timeout() -> void:
 	var shot = projectile.instantiate()
-	print("Preparing to Fire!")
+	#print("Preparing to Fire!")
 	marker_3d.add_child(shot)
 	shot.global_position = marker_3d.global_position
 	

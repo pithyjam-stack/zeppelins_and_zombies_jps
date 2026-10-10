@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://62yalbv34nwy"]
 
 [ext_resource type="Script" uid="uid://l006a6h74lxu" path="res://scenes/Interactable/growth_station.gd" id="1_l6sn2"]
-[ext_resource type="PackedScene" uid="uid://dpexljivghoqb" path="res://scenes/Interactable/iteractable.tscn" id="2_gtsdr"]
+[ext_resource type="PackedScene" uid="uid://dpexljivghoqb" path="res://scenes/Interactable/interactable.tscn" id="2_gtsdr"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_ia5j8"]
 top_radius = 0.75

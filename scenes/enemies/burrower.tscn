@@ -57,7 +57,7 @@ material = SubResource("StandardMaterial3D_2aeme")
 radius = 0.05
 height = 0.1
 
-[node name="Burrower" type="CharacterBody3D" unique_id=77184226]
+[node name="Burrower" type="CharacterBody3D" unique_id=77184226 groups=["Enemy"]]
 script = ExtResource("1_18hvp")
 damage = 4
 

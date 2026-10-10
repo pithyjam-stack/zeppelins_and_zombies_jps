@@ -1,0 +1,90 @@
+[gd_scene format=3 uid="uid://bsoigua3f3uyk"]
+
+[ext_resource type="Script" uid="uid://cg82paj8cvgp3" path="res://scenes/Interactable/turret_station.gd" id="1_rowwy"]
+[ext_resource type="PackedScene" uid="uid://dpexljivghoqb" path="res://scenes/Interactable/interactable.tscn" id="2_3yujo"]
+[ext_resource type="PackedScene" uid="uid://b6e67utmikg8o" path="res://scenes/weapons/pistol_weapon.tscn" id="2_ityll"]
+[ext_resource type="PackedScene" uid="uid://mrpoe6wbljsi" path="res://scenes/weapons/shotgun_weapon.tscn" id="3_wmkho"]
+[ext_resource type="PackedScene" uid="uid://dlsp6816llt2i" path="res://scenes/weapons/rifle_weapon.tscn" id="4_w0d2r"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_uvoqx"]
+top_radius = 0.1
+bottom_radius = 0.1
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_khso5"]
+top_radius = 0.3
+bottom_radius = 0.3
+height = 0.5
+
+[sub_resource type="BoxMesh" id="BoxMesh_ityll"]
+size = Vector3(0.3, 0.5, 0.4)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_wmkho"]
+top_radius = 0.1
+bottom_radius = 0.1
+height = 0.3
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ityll"]
+height = 4.0
+radius = 5.0
+
+[node name="TurretStation" type="Node3D" unique_id=2037068557 node_paths=PackedStringArray("stored_weapons")]
+script = ExtResource("1_rowwy")
+stored_weapons = [NodePath("GunSpawner/Weapons/PistolWeapon"), NodePath("GunSpawner/Weapons/ShotgunWeapon"), NodePath("GunSpawner/Weapons/RifleWeapon")]
+
+[node name="ProtoModel" type="Node3D" parent="." unique_id=1369550484]
+
+[node name="Legs" type="Node3D" parent="ProtoModel" unique_id=2033999867]
+
+[node name="Leg1" type="MeshInstance3D" parent="ProtoModel/Legs" unique_id=840905088]
+transform = Transform3D(0.96592593, 0.25881907, 0, -0.25000003, 0.9330128, -0.25881907, -0.0669873, 0.25, 0.9659258, -0.4, 1, -0.4)
+mesh = SubResource("CylinderMesh_uvoqx")
+
+[node name="Leg2" type="MeshInstance3D" parent="ProtoModel/Legs" unique_id=1500989293]
+transform = Transform3D(0.96592593, -0.25881907, 0, 0.25000003, 0.9330128, -0.25881907, 0.0669873, 0.25, 0.9659258, 0.4, 1, -0.4)
+mesh = SubResource("CylinderMesh_uvoqx")
+
+[node name="Leg3" type="MeshInstance3D" parent="ProtoModel/Legs" unique_id=1229023689]
+transform = Transform3D(1, 0, 0, 0, 0.9659258, 0.25881904, 0, -0.25881904, 0.9659258, 0, 1, 0.4)
+mesh = SubResource("CylinderMesh_uvoqx")
+
+[node name="Body" type="MeshInstance3D" parent="ProtoModel" unique_id=1300596713]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+mesh = SubResource("CylinderMesh_khso5")
+
+[node name="GunSpawner" type="Marker3D" parent="." unique_id=1800966396]
+transform = Transform3D(1, 0, 1.7484555e-07, 0, 1, 0, -1.7484555e-07, 0, 1, 0, 2.5, 0)
+
+[node name="Eye" type="MeshInstance3D" parent="GunSpawner" unique_id=1235084834]
+transform = Transform3D(1, 0, -1.7484555e-07, 0, 1, 0, 1.7484555e-07, 0, 1, 0, 0.20000005, 0)
+mesh = SubResource("BoxMesh_ityll")
+skeleton = NodePath("../../ProtoModel")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="GunSpawner/Eye" unique_id=290365182]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -0.099999994, 0.099999905, 0.20000002)
+mesh = SubResource("CylinderMesh_wmkho")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="GunSpawner/Eye" unique_id=34645444]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.10000001, 0.19999981, 0.20000002)
+mesh = SubResource("CylinderMesh_wmkho")
+
+[node name="Weapons" type="Node3D" parent="GunSpawner" unique_id=2134986939]
+transform = Transform3D(-1, 0, -8.742276e-08, 0, 1, 0, 8.742276e-08, 0, -1, 0, 0, 0)
+
+[node name="PistolWeapon" parent="GunSpawner/Weapons" unique_id=457058281 instance=ExtResource("2_ityll")]
+
+[node name="RifleWeapon" parent="GunSpawner/Weapons" unique_id=582582498 instance=ExtResource("4_w0d2r")]
+
+[node name="ShotgunWeapon" parent="GunSpawner/Weapons" unique_id=175216243 instance=ExtResource("3_wmkho")]
+
+[node name="Interactable" parent="." unique_id=1496014089 instance=ExtResource("2_3yujo")]
+
+[node name="DetectionRadius" type="Area3D" parent="." unique_id=656685584]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+collision_mask = 9
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DetectionRadius" unique_id=687181190]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+shape = SubResource("CylinderShape3D_ityll")
+
+[connection signal="body_entered" from="DetectionRadius" to="." method="_on_detection_radius_body_entered"]
+[connection signal="body_exited" from="DetectionRadius" to="." method="_on_detection_radius_body_exited"]
