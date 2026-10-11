@@ -18,7 +18,7 @@ func _on_repaired(player : Node3D, delta : float) -> void:
 	hold_time += delta
 	time_passed += delta
 	if time_passed >= 1.0:
-		print("Holding... Current time: ", hold_time)
+		print("Holding... Current time: ", int(hold_time))
 		time_passed -= 1.0
 	if Input.is_action_just_released("repair"):
 		time_held += hold_time

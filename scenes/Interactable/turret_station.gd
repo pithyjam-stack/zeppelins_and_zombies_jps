@@ -22,7 +22,8 @@ func _physics_process(delta: float) -> void:
 		if body.is_in_group("Enemy"):
 			gun_spawner.look_at(body.global_position, Vector3.UP, true)
 			curr_weapon.try_shoot()
-	curr_weapon.can_fire = false
+	if not enemy_detected:
+		curr_weapon.can_fire = false
 
 
 func on_interacted(player : Node3D) -> void:
@@ -38,9 +39,12 @@ func on_interacted(player : Node3D) -> void:
 func _on_detection_radius_body_entered(body: Node3D) -> void:
 	if body.is_in_group("Enemy"):
 		print("Enemy Detected.")
-		enemy_detected = true
 		curr_weapon.can_fire = true
+		enemy_detected = true
 
 
 func _on_detection_radius_body_exited(body: Node3D) -> void:
-	gun_spawner.global_rotation = Vector3(0, 0, 0)
+	if body.is_in_group("Enemy"):
+		gun_spawner.global_rotation = Vector3(0, 0, 0)
+		curr_weapon.can_fire = false
+		enemy_detected = false
