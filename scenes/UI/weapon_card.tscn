@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://i657cdw1ukii"]
+
+[ext_resource type="Texture2D" uid="uid://b46q200g3s8t3" path="res://icon.svg" id="1_237jr"]
+[ext_resource type="FontFile" uid="uid://uoi1i2js5qro" path="res://assets/PermanentMarker-Regular.ttf" id="1_y2g0h"]
+[ext_resource type="Script" uid="uid://2rbjplkgfk5r" path="res://scripts/weapon_card.gd" id="3_qebra"]
+
+[sub_resource type="Theme" id="Theme_u11gl"]
+default_font = ExtResource("1_y2g0h")
+default_font_size = 24
+
+[node name="WeaponCard" type="Control" unique_id=1327269953]
+custom_minimum_size = Vector2(256, 384)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme = SubResource("Theme_u11gl")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=486995356]
+custom_minimum_size = Vector2(256, 384)
+layout_mode = 1
+offset_right = 256.0
+offset_bottom = 384.0
+color = Color(0.2, 0.2, 0.2, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=2054370677]
+custom_minimum_size = Vector2(256, 384)
+layout_mode = 1
+offset_right = 256.0
+offset_bottom = 384.0
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=823986562]
+layout_mode = 2
+
+[node name="WeaponImage" type="TextureRect" parent="MarginContainer/VBoxContainer" unique_id=355583880]
+custom_minimum_size = Vector2(192, 192)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("1_237jr")
+
+[node name="WeaponName" type="Label" parent="MarginContainer/VBoxContainer" unique_id=465840233]
+layout_mode = 2
+text = "WeaponName"
+
+[node name="WeaponCost" type="Label" parent="MarginContainer/VBoxContainer" unique_id=77034045]
+layout_mode = 2
+text = "Cost : 999"
+
+[node name="BuyButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1053140150]
+custom_minimum_size = Vector2(192, 64)
+layout_mode = 2
+size_flags_vertical = 8
+text = "BUY"
+script = ExtResource("3_qebra")
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/BuyButton" to="MarginContainer/VBoxContainer/BuyButton" method="_on_pressed"]

@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://j6ahtfvixgsk"]
+
+[ext_resource type="FontFile" uid="uid://uoi1i2js5qro" path="res://assets/PermanentMarker-Regular.ttf" id="1_ykjm2"]
+[ext_resource type="PackedScene" uid="uid://i657cdw1ukii" path="res://scenes/UI/weapon_card.tscn" id="2_70tls"]
+
+[sub_resource type="Theme" id="Theme_70tls"]
+default_font = ExtResource("1_ykjm2")
+default_font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_70tls"]
+font_size = 64
+
+[node name="GunStationMenu" type="Control" unique_id=479325489]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_70tls")
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1495621060]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer" unique_id=1524742577]
+custom_minimum_size = Vector2(1080, 600)
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="CenterContainer/MarginContainer" unique_id=1533465075]
+layout_mode = 2
+color = Color(0, 0, 0, 0.47058824)
+
+[node name="Label" type="Label" parent="CenterContainer/MarginContainer" unique_id=673599126]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 64
+text = "Gun Station"
+label_settings = SubResource("LabelSettings_70tls")
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="HBoxContainer" parent="CenterContainer" unique_id=2034756000]
+custom_minimum_size = Vector2(512, 0)
+layout_mode = 2
+
+[node name="WeaponCard" parent="CenterContainer/VBoxContainer" unique_id=1327269953 instance=ExtResource("2_70tls")]
+layout_mode = 2
+
+[node name="WeaponCard2" parent="CenterContainer/VBoxContainer" unique_id=761757262 instance=ExtResource("2_70tls")]
+layout_mode = 2
+
+[node name="WeaponCard3" parent="CenterContainer/VBoxContainer" unique_id=1997616322 instance=ExtResource("2_70tls")]
+layout_mode = 2
