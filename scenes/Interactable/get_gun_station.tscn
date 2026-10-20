@@ -49,6 +49,9 @@ mesh = SubResource("BoxMesh_oymx4")
 skeleton = NodePath("../Pillar2")
 
 [node name="Iteractable" parent="." unique_id=1496014089 instance=ExtResource("1_ecqm5")]
+process_mode = 3
 
 [node name="GunStationMenu" parent="." unique_id=479325489 instance=ExtResource("3_fl24j")]
 visible = false
+
+[connection signal="visibility_changed" from="GunStationMenu" to="." method="_on_gun_station_menu_visibility_changed"]

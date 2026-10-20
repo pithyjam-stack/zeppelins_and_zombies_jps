@@ -16,4 +16,8 @@ func _process(delta: float) -> void:
 func on_interacted(player: Node3D) -> void:
 	#print("Giving Weapon")
 	#player.add_weapon(weapon)
-	gun_station_menu.visible = true
+	gun_station_menu.visible = !gun_station_menu.visible
+	if gun_station_menu.visible:
+		get_tree().paused = true
+	else:
+		get_tree().paused = false
